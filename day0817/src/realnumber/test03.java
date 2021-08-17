@@ -13,12 +13,12 @@ public class test03 {
 		int rate = 30; //할인율
 		
 		//처리
-		int total = price * (100-rate) /100;
+		int result = price * (100-rate) /100; // 강제 변환 (double을 int에 딱 맞게 강제로 변환)
 		//int result = price / 100 * (100*rate); 
 		//나누기를 먼저하면 손실 발생 가능성 있음
 				
 		//출력		
-		System.out.println(total + "원");
+		System.out.println(result + "원");
 		
 	}
 }
