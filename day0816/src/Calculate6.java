@@ -21,7 +21,8 @@ public class Calculate6 {
 		//출력
 		System.out.println(adultTotal);
 		System.out.println(teenTotal);
+
 		System.out.println(childTotal);
 		System.out.println(total);
-	}
+}
 }
