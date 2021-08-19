@@ -26,23 +26,22 @@ public class test05 {
 		sc.close();
 		
 		//처리
-		double sum = (double) korean + english + match ;
-		double avg = (sum/3);
+		int sum = korean + english + match ;
+		float avg = (float) (sum/3);
 		
 		boolean pass = 60 <= avg && 40 <= korean && 40 <= english && 40 <= match ;
 	
 		//결과
+		
+		System.out.println("이름 = " + name);
+		System.out.println("총점 = " + sum + "점");
+		System.out.println("평균 = " + avg + "점");
+		
 		if(pass) {
-			System.out.println("이름 = " + name);
-			System.out.println("총점 = " + sum + "점");
-			System.out.println("평균 = " + avg + "점");
 			System.out.println("해당 평가 통과 입니다!");
 			
 		}
 		else {
-			System.out.println("이름 = " + name);
-			System.out.println("총점 = " + sum + "점");
-			System.out.println("평균 = " + avg + "점");	
 			System.out.println("재평가 입니다!");
 		}
 		
