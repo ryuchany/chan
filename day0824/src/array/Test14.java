@@ -25,7 +25,7 @@ public class Test14 {
 
 		for (int n = 0; n < rotate; n++) {
 			int temp = data[data.length - 1];
-			for (int i = data.length - 1; i >= 1; i--) {
+			for (int i = data.length - 1; i > 0; i--) {
 				data[i] = data[i - 1];
 			}
 			data[0] = temp;

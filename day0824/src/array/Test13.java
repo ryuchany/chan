@@ -14,7 +14,7 @@ public class Test13 {
 			System.out.print(" ");
 		}
 
-		System.out.println("");
+		System.out.println();
 
 		for (int i = 0; i < data.length / 2; i++) {
 			int temp = data[i];

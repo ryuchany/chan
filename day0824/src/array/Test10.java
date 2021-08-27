@@ -34,9 +34,9 @@ public class Test10 {
 			}
 		}
 
-		System.out.println("최대값 위치 = " + minIndex);
+		System.out.println("최소값 위치 = " + minIndex);
 		// 배열의 특성상 위치를 알면 데이터도 알 수 있다.
-		System.out.println("최대값 = " + score[minIndex]);
+		System.out.println("최소값 = " + score[minIndex]);
 
 	}
 }
