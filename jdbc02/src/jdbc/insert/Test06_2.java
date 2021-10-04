@@ -9,16 +9,16 @@ public class Test06_2 {
 	public static void main(String[] args) {
 		try {
 			//입력
-			String memberId = "khuser1237";
-			String memberPw = "khuser1237";
+			String memberId = "asdasd12345";
+			String memberPw = "asdasd12345";
 			String memberNick = "학생1237";
 			String memberBirth = "1990-05-25";
-			String memberEmail = "khuser1234@kh.com";
+			String memberEmail = "asd1234@aa.com";
 			String memberPhone = "010-1231-3453";
 
 			//처리
 			Class.forName("oracle.jdbc.OracleDriver");
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kh", "kh");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kh", "0000");
 
 			//#1. 형식을 지정할 경우
 			String sql1 = "insert into member("

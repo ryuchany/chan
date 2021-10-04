@@ -8,11 +8,11 @@ import java.sql.SQLException;
 public class Test06 {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		//입력
-		String memberId = "khuser1236";
-		String memberPw = "khuser1236";
+		String memberId = "asdasd111";
+		String memberPw = "asdasd111";
 		String memberNick = "학생1236";
 		String memberBirth = "1990-05-25";
-		String memberEmail = "khuser1234@kh.com";
+		String memberEmail = "asd1234@aa.com";
 		String memberPhone = "010-1231-3453";
 
 		//처리

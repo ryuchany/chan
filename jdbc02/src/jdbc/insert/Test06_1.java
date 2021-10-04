@@ -9,11 +9,11 @@ public class Test06_1 {
 	public static void main(String[] args) {
 		try {
 			//입력
-			String memberId = "khuser1237";
-			String memberPw = "khuser1237";
+			String memberId = "asdasd1234";
+			String memberPw = "asdasd1234";
 			String memberNick = "학생1237";
 			String memberBirth = "1990-05-25";
-			String memberEmail = "khuser1234@kh.com";
+			String memberEmail = "asd1234@aa.com";
 			String memberPhone = "010-1231-3453";
 
 			//처리
@@ -21,14 +21,14 @@ public class Test06_1 {
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kh", "0000");
 
 			//#1. 형식을 지정할 경우
-			String sql1 = "insert into member("
-										+ "member_id, "
-										+ "member_pw, "
-										+ "member_nick, "
-										+ "member_birth, "
-										+ "member_email, "
-										+ "member_phone"
-								+ ") values(?, ?, ?, to_date(?, 'YYYY-MM-DD'), ?, ?)";
+//			String sql1 = "insert into member("
+//										+ "member_id, "
+//										+ "member_pw, "
+//										+ "member_nick, "
+//										+ "member_birth, "
+//										+ "member_email, "
+//										+ "member_phone"
+//								+ ") values(?, ?, ?, to_date(?, 'YYYY-MM-DD'), ?, ?)";
 
 			//#2. 형식을 지정하지 않을 경우
 			String sql2 = "insert into member values(?, ?, ?, to_date(?, 'YYYY-MM-DD'), ?, ?, sysdate, 100, '준회원')";
