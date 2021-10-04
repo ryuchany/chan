@@ -20,7 +20,7 @@ public class Test04_1 {
 		sc.close();
 
 		Class.forName("oracle.jdbc.OracleDriver");
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kh", "kh");
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kh", "0000");
 
 //		String sql = "insert into exam values(exam_seq.nextval, '또가스', 'SQL활용', '서술형', 70)";
 		String sql = "insert into exam values(exam_seq.nextval, ?, ?, ?, ?)";

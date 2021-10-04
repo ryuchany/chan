@@ -33,7 +33,7 @@ public class Test05_2 {
 
 		//처리 : 데이터베이스 등록
 		Class.forName("oracle.jdbc.OracleDriver");
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kh", "kh");
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kh", "0000");
 
 		String sql = "insert into product values("
 									+ "product_seq.nextval, ?, ?, ?, ?, ?)";
