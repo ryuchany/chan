@@ -21,7 +21,7 @@ public class Test02_2 {
 		//Q : 위 변수에 저장된 값이 menu 테이블에 insert 될 수 있도록 JDBC 구문을 작성해보세요.
 		Class.forName("oracle.jdbc.OracleDriver");
 		Connection con = DriverManager.getConnection(
-										"jdbc:oracle:thin:@localhost:1521:xe", "kh", "kh");
+										"jdbc:oracle:thin:@localhost:1521:xe", "kh", "0000");
 
 		String sql = "insert into menu(menu_name, menu_price, menu_type) "
 				+ "values('"+menuName+"', "+menuPrice+", '"+menuType+"')";
