@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 public class Test02 {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		
+		
 		//준비
 		int no = 2;//고칠번호
 		String name = "홈런볼";//바꿀이름

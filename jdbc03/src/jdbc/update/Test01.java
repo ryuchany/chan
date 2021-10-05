@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 public class Test01 {
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+	
+		
 		//준비
 		int no = 2;
 		int price = 2500;
