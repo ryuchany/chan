@@ -19,7 +19,7 @@ public class Test07_1 {
 		Class.forName("oracle.jdbc.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kh", "0000");
 
-		String sql = "select * from product where regexp_like(name, ?)";
+		String sql = "select * from product where instr(name, ?) > 0";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
 		ResultSet rs = ps.executeQuery();
