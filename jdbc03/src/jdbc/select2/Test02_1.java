@@ -12,7 +12,7 @@ public class Test02_1 {
 
 		int exam_id = 10;
 
-		//처리
+		// 처리
 		Connection con = JdbcUtils.connect("kh", "0000");
 
 		String sql = "select * from exam where exam_id = ?";
