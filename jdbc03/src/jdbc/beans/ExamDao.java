@@ -78,4 +78,21 @@ public class ExamDao {
 		return result > 0;
 	}
 
+//	[3] 이름만 수정하는 메소드
+//	= update exam set student = ? where exam_id = ?
+//	= 준비물 : ExamDto
+//	= 결과물 : boolean
+	public boolean updateStudent(ExamDto examDto) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "update exam set student=? where exam_id=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, examDto.getStudent());
+		ps.setInt(2, examDto.getExamId());
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
+	}
 }
