@@ -22,7 +22,7 @@ public class Test03 {
 		memberDto.setMemberNick(sc.nextLine());
 
 		System.out.print("생년월일을 입력하세요 : ");
-		memberDto.setMemberBrith(sc.nextLine());
+		memberDto.setMemberBirth(sc.nextLine());
 
 		System.out.print("이메일을 입력하세요 : ");
 		memberDto.setMemberEmail(sc.nextLine());
