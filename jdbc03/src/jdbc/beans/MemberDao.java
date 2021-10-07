@@ -68,4 +68,17 @@ public class MemberDao {
 		return editPassword(memberDto.getMemberId(), memberDto.getMemberPw(), changePw);
 	}
 
+	public boolean delete(String memberId) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "delete member where member_id = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, memberId);
+		int result = ps.executeUpdate();
+		
+		con.close();
+		return result > 0;
+
+	}
+
 }
