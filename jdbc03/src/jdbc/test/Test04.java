@@ -1,9 +1,9 @@
-package jdbc.update;
+package jdbc.test;
 
 import jdbc.beans.ExamDao;
 import jdbc.beans.ExamDto;
 
-public class Test05 {
+public class Test04 {
 	public static void main(String[] args) throws Exception {
 		// 시험 정보 수정
 
