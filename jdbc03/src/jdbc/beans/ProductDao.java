@@ -75,4 +75,18 @@ public class ProductDao {
 		return result > 0;
 	}
 
+	public boolean delete(int no) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		String sql = "delete product where no = ?";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, no);
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
+
+	}
+
 }
