@@ -95,4 +95,22 @@ public class ExamDao {
 
 		return result > 0;
 	}
+
+// [4] 데이터를 삭제하는 메소드
+// = PK를 이용하여 1개의 데이터를 삭제
+// = 매개변수 : Primary Key(시험지번호, exam_id) int
+// = 반환형 : boolean
+	public boolean delete(int examId) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "delete exam where exam_id = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, examId);
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
+
+	}
 }
