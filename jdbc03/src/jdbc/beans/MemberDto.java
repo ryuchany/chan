@@ -5,7 +5,7 @@ public class MemberDto {
 	private String memberId;
 	private String memberPw;
 	private String memberNick;
-	private String memberBrith;
+	private String memberBirth;
 	private String memberEmail;
 	private String memberPhone;
 	private String memberJoin;
@@ -34,11 +34,11 @@ public class MemberDto {
 	public void setMemberNick(String memberNick) {
 		this.memberNick = memberNick;
 	}
-	public String getMemberBrith() {
-		return memberBrith;
+	public String getMemberBirth() {
+		return memberBirth;
 	}
-	public void setMemberBrith(String memberBrith) {
-		this.memberBrith = memberBrith;
+	public void setMemberBirth(String memberBirth) {
+		this.memberBirth = memberBirth;
 	}
 	public String getMemberEmail() {
 		return memberEmail;
