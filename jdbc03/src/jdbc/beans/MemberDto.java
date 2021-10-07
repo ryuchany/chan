@@ -71,5 +71,9 @@ public class MemberDto {
 		this.memberGrade = memberGrade;
 	}
 
+	public String getMemberBirthDate() {
+		return memberBirth.substring(0, 10);
+	}
+
 
 }

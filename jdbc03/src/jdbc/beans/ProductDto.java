@@ -1,5 +1,7 @@
 package jdbc.beans;
 
+import java.sql.Date;
+
 public class ProductDto {
 	// no name type price made expire
 
@@ -60,5 +62,18 @@ public class ProductDto {
 
 	public void setExpire(String expire) {
 		this.expire = expire;
+	}
+	
+	public String getMadeDate() {
+		return made.substring(0, 10);
+	}
+	public String getMadeTime() {
+		return made.substring(11, 16);
+	}
+	public String getExpireDate() {
+		return expire.substring(0, 10);
+	}
+	public String getExpireTime() {
+		return expire.substring(11, 16);
 	}
 }

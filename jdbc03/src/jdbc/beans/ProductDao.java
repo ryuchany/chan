@@ -121,4 +121,33 @@ public class ProductDao {
 		return list;
 	}
 
+	public List<ProductDto> select(String column, String keyword) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "select * from product where instr(#1, ?) > 0 order by #1 asc";
+		sql = sql.replace("#1", column);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ResultSet rs = ps.executeQuery();
+
+		List<ProductDto> list = new ArrayList<>();
+
+		while (rs.next()) {
+			ProductDto productDto = new ProductDto();
+			productDto.setNo(rs.getInt("no"));
+			productDto.setName(rs.getString("name"));
+			productDto.setType(rs.getString("type"));
+			productDto.setPrice(rs.getInt("price"));
+			productDto.setMade(rs.getString("made"));
+			productDto.setExpire(rs.getString("expire"));
+
+			list.add(productDto);
+		}
+
+		con.close();
+
+		return list;
+
+	}
+
 }
