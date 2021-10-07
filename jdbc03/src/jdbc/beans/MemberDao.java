@@ -2,6 +2,9 @@ package jdbc.beans;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import jdbc.util.JdbcUtils;
 
@@ -75,10 +78,43 @@ public class MemberDao {
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberId);
 		int result = ps.executeUpdate();
-		
+
 		con.close();
 		return result > 0;
 
+	}
+
+//	목록 조회 기능
+	public List<MemberDto> list() throws Exception {
+
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "select * from member";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+
+		// rs의 내용을 List에 복사
+		List<MemberDto> memberList = new ArrayList<>();
+		while (rs.next()) {
+			MemberDto memberDto = new MemberDto();
+
+			// (9개 항목 복사)
+			memberDto.setMemberId(rs.getString("member_id"));
+			memberDto.setMemberPw(rs.getString("member_pw"));
+			memberDto.setMemberNick(rs.getString("member_nick"));
+			memberDto.setMemberBirth(rs.getString("member_birth"));
+			memberDto.setMemberEmail(rs.getString("member_email"));
+			memberDto.setMemberPhone(rs.getString("member_phone"));
+			memberDto.setMemberJoin(rs.getString("member_join"));
+			memberDto.setMemberPoint(rs.getInt("member_point"));
+			memberDto.setMemberGrade(rs.getString("member_grade"));
+
+			memberList.add(memberDto);
+		}
+
+		con.close();
+
+		return memberList;
 	}
 
 }

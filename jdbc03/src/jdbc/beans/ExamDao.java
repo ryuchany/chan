@@ -2,6 +2,9 @@ package jdbc.beans;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import jdbc.util.JdbcUtils;
 
@@ -113,4 +116,76 @@ public class ExamDao {
 		return result > 0;
 
 	}
+
+//	[5] 목록조회(R) 메소드(+검색)
+//	= 여러 개의 데이터가 나오는 메소드
+//	= select * from exam
+//	= 매개변수 : 없음
+//	= 반환형 : 시험지 목록(List<ExamDto>)
+	public List<ExamDto> select() throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "select * from exam";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+
+		// rs에 들어있는 데이터를 새로 만든 List에 복사하여 반환
+		List<ExamDto> list = new ArrayList<>();// 1. 비어있는 List를 생성한다.
+
+		while (rs.next()) {// 2. 데이터 개수만큼 반복을 수행한다.
+			// 3. 한 줄씩 하나의 객체에 복사한다
+			ExamDto examDto = new ExamDto();
+			examDto.setExamId(rs.getInt("exam_id"));// rs의 exam_id를 객체에 복사
+			examDto.setStudent(rs.getString("student"));// rs의 student를 객체에 복사
+			examDto.setSubject(rs.getString("subject"));// rs의 subject를 객체에 복사
+			examDto.setType(rs.getString("type"));// rs의 type을 객체에 복사
+			examDto.setScore(rs.getInt("score"));// rs의 score를 객체에 복사
+
+			// 4. 만들어진 객체를 List에 추가한다.
+			list.add(examDto);
+		}
+
+		con.close();
+
+		return list;
+	}
+
+//	[6] 검색(R) 메소드
+//	= 검색은 목록과 유사(데이터가 여러 개 나옴)
+//	= 어떤 항목으로 검색할 것인지 정해야 한다.
+//	= 학생 이름으로 검색한 결과를 출력하도록 구현(다른 형태도 가능)
+//	= 매개변수 : 학생이름(String)
+//	= 반환형 : 시험지정보목록(List<ExamDto>)
+	public List<ExamDto> selectByStudent(String student) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "select * from exam " + "where student = ? " + "order by exam_id asc";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, student);
+		ResultSet rs = ps.executeQuery();
+
+		// rs에 들어있는 데이터를 새로 만든 List에 복사하여 반환
+		List<ExamDto> list = new ArrayList<>();// 1. 비어있는 List를 생성한다.
+
+		while (rs.next()) {// 2. 데이터 개수만큼 반복을 수행한다.
+			// 3. 한 줄씩 하나의 객체에 복사한다
+			ExamDto examDto = new ExamDto();
+			examDto.setExamId(rs.getInt("exam_id"));// rs의 exam_id를 객체에 복사
+			examDto.setStudent(rs.getString("student"));// rs의 student를 객체에 복사
+			examDto.setSubject(rs.getString("subject"));// rs의 subject를 객체에 복사
+			examDto.setType(rs.getString("type"));// rs의 type을 객체에 복사
+			examDto.setScore(rs.getInt("score"));// rs의 score를 객체에 복사
+
+			// 4. 만들어진 객체를 List에 추가한다.
+			list.add(examDto);
+		}
+
+		con.close();
+
+		return list;
+	}
+
+//	[?] 단일조회(R) 메소드
+//	= 결과가 1개 또는 0개로 나오는 메소드
+
 }

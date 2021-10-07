@@ -2,6 +2,9 @@ package jdbc.beans;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import jdbc.util.JdbcUtils;
 
@@ -87,6 +90,35 @@ public class ProductDao {
 
 		return result > 0;
 
+	}
+
+	public List<ProductDto> select() throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "select * from product";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+
+		// rs에 들어있는 데이터를 새로 만든 List에 복사하여 반환
+		List<ProductDto> list = new ArrayList<>();// 1. 비어있는 List를 생성한다.
+
+		while (rs.next()) {// 2. 데이터 개수만큼 반복을 수행한다.
+			// 3. 한 줄씩 하나의 객체에 복사한다
+			ProductDto productDto = new ProductDto();
+			productDto.setNo(rs.getInt("no"));
+			productDto.setName(rs.getString("name"));
+			productDto.setType(rs.getString("type"));
+			productDto.setPrice(rs.getInt("price"));
+			productDto.setMade(rs.getString("made"));
+			productDto.setExpire(rs.getString("expire"));
+
+			// 4. 만들어진 객체를 List에 추가한다.
+			list.add(productDto);
+		}
+
+		con.close();
+
+		return list;
 	}
 
 }
