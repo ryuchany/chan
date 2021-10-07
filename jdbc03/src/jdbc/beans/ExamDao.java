@@ -185,6 +185,40 @@ public class ExamDao {
 		return list;
 	}
 
+// [7] 항목(column)과 검색어(keyword)를 이용한 검색 메소드	
+// = (주의) 항목은 홀더처리하면 안된다	
+	public List<ExamDto> select(String column, String keyword) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+//		String sql = "select * from exam where #1 = ? order by #1 asc";
+		String sql = "select * from exam where instr(#1, ?) > 0 order by #1 asc";
+		sql = sql.replace("#1", column);
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ResultSet rs = ps.executeQuery();
+
+		// rs에 들어있는 데이터를 새로 만든 List에 복사하여 반환
+		List<ExamDto> list = new ArrayList<>();// 1. 비어있는 List를 생성한다.
+
+		while (rs.next()) {// 2. 데이터 개수만큼 반복을 수행한다.
+			// 3. 한 줄씩 하나의 객체에 복사한다
+			ExamDto examDto = new ExamDto();
+			examDto.setExamId(rs.getInt("exam_id"));// rs의 exam_id를 객체에 복사
+			examDto.setStudent(rs.getString("student"));// rs의 student를 객체에 복사
+			examDto.setSubject(rs.getString("subject"));// rs의 subject를 객체에 복사
+			examDto.setType(rs.getString("type"));// rs의 type을 객체에 복사
+			examDto.setScore(rs.getInt("score"));// rs의 score를 객체에 복사
+
+			// 4. 만들어진 객체를 List에 추가한다.
+			list.add(examDto);
+		}
+
+		con.close();
+
+		return list;
+
+	}
+
 //	[?] 단일조회(R) 메소드
 //	= 결과가 1개 또는 0개로 나오는 메소드
 
