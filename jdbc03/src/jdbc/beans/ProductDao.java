@@ -6,6 +6,10 @@ import java.sql.PreparedStatement;
 import jdbc.util.JdbcUtils;
 
 public class ProductDao {
+
+	public static final String USERNAME = "kh";
+	public static final String PASSWORD = "0000";
+
 	public void insert(int no, String name, String type, int price, String made, String expire) throws Exception {
 		Connection con = JdbcUtils.connect("kh", "0000");
 
@@ -37,4 +41,38 @@ public class ProductDao {
 
 		con.close();
 	}
+
+	public boolean update(ProductDto productDto) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "update product set name = ? , type = ? , price = ?, made = to_date(?,'YYYY-MM-dd') , expire = to_date(?,'YYYY-MM-dd') where no = ? ";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, productDto.getName());
+		ps.setString(2, productDto.getType());
+		ps.setInt(3, productDto.getPrice());
+		ps.setString(4, productDto.getMade());
+		ps.setString(5, productDto.getExpire());
+		ps.setInt(6, productDto.getNo());
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
+
+	}
+
+	public boolean updatePrice(ProductDto productDto) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "update product set price=? where no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, productDto.getPrice());
+		ps.setInt(2, productDto.getNo());
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
+	}
+
 }
