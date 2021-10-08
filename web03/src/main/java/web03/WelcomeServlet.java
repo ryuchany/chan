@@ -17,10 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 //3. 이 파일(페이지)을 주문하면 만들어질 내용을 코드로 작성
 //	   - 부모 클래스의 service()를 재정의하여 작성한다!
 
-@WebServlet(urlPatterns = "/welcome.kh")
-public class WelcomeServlet extends HttpServlet {
-	@Override
+@WebServlet(urlPatterns = "/welcome.txt")//2
+public class WelcomeServlet extends HttpServlet {//1
+	@Override//3
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.getWriter().println("Hello Servlet");
+		//System.out.println("hello Servlet");//결과를 서버의 콘솔에 출력
+		resp.getWriter().println("Hello Servlet");//결과를 사용자가 볼 화면에 출력
 	}
 }
