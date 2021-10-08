@@ -150,4 +150,35 @@ public class ProductDao {
 
 	}
 
+//	단일조회 메소드
+	public ProductDto get(int no) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "select * from product where no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, no);
+		ResultSet rs = ps.executeQuery();
+
+		ProductDto productDto;
+		if(rs.next()) {
+			productDto = new ProductDto();
+
+			//copy
+			productDto.setNo(rs.getInt("no"));
+			productDto.setName(rs.getString("name"));
+			productDto.setType(rs.getString("type"));
+			productDto.setPrice(rs.getInt("price"));
+			productDto.setMade(rs.getString("made"));
+			productDto.setExpire(rs.getString("expire"));
+		}
+		else {
+			productDto = null;
+		}
+
+
+		con.close();
+
+		return productDto;
+	}
+	
 }
