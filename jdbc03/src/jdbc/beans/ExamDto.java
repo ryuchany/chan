@@ -12,6 +12,14 @@ public class ExamDto {
 	private String type;
 	private int score;
 
+	
+	
+	@Override
+	public String toString() {
+		return "ExamDto [examId=" + examId + ", student=" + student + ", subject=" + subject + ", type=" + type
+				+ ", score=" + score + "]";
+	}
+
 	// 기본생성자 + setter/getter (+toString)
 	public ExamDto() {
 		super();

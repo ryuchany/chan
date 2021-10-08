@@ -12,6 +12,12 @@ public class ProductDto {
 	private String made;
 	private String expire;
 
+	@Override
+	public String toString() {
+		return "ProductDto [no=" + no + ", name=" + name + ", type=" + type + ", price=" + price + ", made=" + made
+				+ ", expire=" + expire + "]";
+	}
+
 	public ProductDto() {
 		super();
 	}

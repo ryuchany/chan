@@ -12,6 +12,16 @@ public class MemberDto {
 	private int memberPoint;
 	private String memberGrade;
 	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "MemberDto [memberId=" + memberId + ", memberPw=" + memberPw + ", memberNick=" + memberNick
+				+ ", memberBirth=" + memberBirth + ", memberEmail=" + memberEmail + ", memberPhone=" + memberPhone
+				+ ", memberJoin=" + memberJoin + ", memberPoint=" + memberPoint + ", memberGrade=" + memberGrade + "]";
+	}
+
 	public MemberDto() {
 		super();
 	}
