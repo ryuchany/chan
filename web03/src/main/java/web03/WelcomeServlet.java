@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 //2. 주문 가능하도록 주소를 설정
 //3. 이 파일(페이지)을 주문하면 만들어질 내용을 코드로 작성
 //	   - 부모 클래스의 service()를 재정의하여 작성한다!
-
 @WebServlet(urlPatterns = "/welcome.txt")//2
 public class WelcomeServlet extends HttpServlet {//1
 	@Override//3
