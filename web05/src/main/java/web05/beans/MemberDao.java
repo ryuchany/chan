@@ -115,7 +115,7 @@ public class MemberDao {
 		return memberList;
 	}
 
-	public List<MemberDto> select(String column, String keyword) throws Exception {
+	public List<MemberDto> search(String column, String keyword) throws Exception {
 		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
 
 		String sql = "select * from member where instr(#1, ?) > 0 order by #1 asc";

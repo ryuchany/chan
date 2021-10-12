@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SNS 로그인 구현</title>
+</head>
+<body>
+
+	<!-- 
+		가짜 이미지(dummy image)를 이용하여 자리를 채울 수 있다.
+		= https://placeholder.com
+		= https://placeimg.com
+	 -->
+		<img src=https://via.placeholder.com/150>
+
+	<hr>
+	<!-- 
+		절대경로(absolute path)를 이용하여 이미지를 연결 설정
+		= 프로토콜 생략 가능
+		= 서버 주소와 포트 생략 가능
+		= (주의) context root(간판) 생략 불가!
+	 -->
+		<h1>SNS 로그인 (절대경로)</h1>
+		<img src="http://localhost:8080/web06/image/다운로드.png" width="50" height="50">
+		<img src="//localhost:8080/web06/image/카카오.jfif" width="50" height="50">
+		<img src="/web06/image/트위터.png" width="50" height="50">
+		<img src="/image/페이스북.png" width="50" height="50">
+	
+	<!-- 
+		상대경로(relative path)를 이용하여 이미지를 연결 설정
+		= ./은 현재 위치를 의미
+		= ../은 상위 위치를 의미
+	 -->
+	<hr>
+		<h1>SNS 로그인 (상대경로)</h1>
+		<img src="../image/다운로드.png" width="50" height="50">
+		<img src="../image/카카오.jfif" width="50" height="50">
+		<img src="../image/트위터.png" width="50" height="50">
+		<img src="../image/페이스북.png" width="50" height="50">
+	
+	
+</body>
+</html>
