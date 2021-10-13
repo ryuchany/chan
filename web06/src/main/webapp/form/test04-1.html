@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>시험 정보 등록 페이지</title>
+</head>
+<body>
+
+	<!-- 
+		(Q) 시험 정보를 등록하는 서블릿과 연결되는 입력폼을 구현하세요.
+	 -->
+	<h1>시험 정보 등록</h1>
+
+	<form action="/web05/exam/insert.kh">
+
+		<input type="text" name="student" placeholder="학생이름" required>
+		<br><br>
+		<select name="subject" required>
+			<option value="">과목 선택</option>
+			<option>응용SW기초기술활용</option>
+			<option>프로그래밍언어활용</option>
+			<option>네트워크프로그래밍구현</option>
+			<option>SQL활용</option>
+			<option>데이터입출력구현</option>
+			<option>요구사항확인</option>
+			<option>서버프로그래밍구현</option>
+		</select>
+		<br><br>
+		<select name="type" required>
+			<!-- 첫 도움말은 비어있는 값처럼 처리할 수 있다 -->
+			<option value="">유형 선택</option>
+			<option>서술형</option>
+			<option>문제해결시나리오</option>
+			<option>평가자체크리스트</option>
+		</select>
+		<br><br>
+		<input type="number" name="score" placeholder="시험점수" required
+					min="0" max="100">
+		<br><br>
+		<input type="submit" value="등록">
+
+	</form>
+
+</body>
+</html> 

@@ -22,7 +22,7 @@ public class MemberFindServlet extends HttpServlet {
 			String column = req.getParameter("column");
 			String keyword = req.getParameter("keyword");
 			
-			boolean search = column != null && column.equals(" ") && keyword != null && keyword.equals(" ");
+			boolean search = column != null && !column.equals(" ") && keyword != null && !keyword.equals(" ");
 			MemberDao memberDao = new MemberDao();
 			
 			List<MemberDto> list;

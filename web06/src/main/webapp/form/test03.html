@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원 검색 페이지</title>
+</head>
+<body>
+
+	<!-- 회원을 원하는 항목에 대한 검색어로 검색할 수 있도록 입력하는 폼을 구현 -->
+	
+	<h1>회원 검색</h1>
+	<form action="/web05/member/find.txt">
+	
+		<select name="column">
+		<option value="member_id">아이디</option>
+		<option value="member_pw">닉네임</option>
+		<option value="member_email">이메일</option>
+		<option value="member_phone">전화번호</option>
+		<option value="member_grade">등급</option>
+		</select>
+		
+	<!-- 
+		required="required" 라고 주면 반드시 입력해야 전송되도록 설정할 수 있다.
+		autocomplete="off" 라고 주면 자동완성이 표시되지 않는다.
+	
+		(참고) 이름과 값이 똑같은 속성은 이름만 적어도 인정! (required, readonly, disabled, ...)
+	 -->	
+	
+		<input type="text" name="keyword" placeholder="검색어 입력" required autocomplete="off">
+		
+		<input type="submit" value="검색">
+	
+	
+	</form>
+
+</body>
+</html>

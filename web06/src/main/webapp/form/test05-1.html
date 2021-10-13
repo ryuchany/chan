@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원 가입</title>
+</head>
+<body>
+	<!-- 
+		(Q) 입력창을 세분화하여 등록할 수 있나요?
+		(A) 서버에서 처리해주거나 DB에서 구분되어있으면 가능! 아니면 불가!
+	 -->
+	<h1>회원 정보 입력</h1>
+
+	<form action="/web05/member/join.kh">
+
+		아이디 : <input type="text" name="memberId">
+		<br><br>
+		비밀번호 : <input type="password" name="memberPw">
+		<br><br> 
+		닉네임 : <input type="text" name="memberNick">
+		<br><br>
+		생년월일 : 
+		<select name="memberBirth1">
+			<option>2021</option>
+			<option>2020</option>
+			<option>2019</option>
+			<option>2018</option>
+		</select>
+		년 
+		<select name="memberBirth2">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+			<option>8</option>
+			<option>9</option>
+			<option>10</option>
+			<option>11</option>
+			<option>12</option>
+		</select>
+		월
+		<select name="memberBirth3">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+			<option>8</option>
+			<option>9</option>
+			<option>10</option>
+			<option>11</option>
+		</select>
+		일
+
+		<br><br>
+		이메일 : 
+
+		<input type="text" name="memberEmail">
+		@
+		<select name="memberEmail2">
+			<option>gmail.com</option>
+			<option>naver.com</option>
+			<option>hanmail.com</option>
+		</select>
+
+		<br><br>
+		전화번호 : 
+		<select>
+			<option value="">선택</option>
+			<option>SKT</option>
+			<option>KT</option>
+			<option>LGU+</option>
+			<option>알뜰폰</option>
+		</select>
+		<select>
+			<option value="">선택</option>
+			<option>010</option>
+			<option>011</option>
+			<option>016</option>
+			<option>017</option>
+			<option>018</option>
+			<option>019</option>
+		</select>
+		-
+		<input type="text">
+		-
+		<input type="text">
+
+		<br><br>
+		<input type="submit" value="회원가입">
+
+	</form>
+
+</body>
+</html>
