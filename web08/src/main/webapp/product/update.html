@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상품 관리 홈페이지</title>
+</head>
+<body>
+	<h1>상품 정보 수정</h1>
+
+	<!-- 
+		필드셋(fieldset)은 폼(form) 내부의 구획정리를 위해 사용
+		입력정보가 여러 종류로 구분될 때 해당 영역을 분리하기 위하여 사용
+		영역에 제목을 <legend>로 줄 수 있다.
+	 -->
+
+<!-- 	<form action="/web08/product/update.txt"> -->
+	<form action="update.txt">
+
+		<fieldset>
+			<legend>대상 정보</legend>
+			상품번호 : <input type="number" name="no" required>
+		</fieldset>
+
+		<fieldset>
+			<legend>변경할 정보</legend>
+
+			상품이름 : <input type="text" name="name" required>
+
+			<br><br>
+
+			상품분류 : 
+			<select name="type" required>
+				<option value="">분류 선택</option>
+				<option>과자</option>
+				<option>아이스크림</option>
+				<option>사탕</option>
+				<option>주류</option>	
+			</select>
+
+			<br><br>
+
+			상품가격 : <input type="number" name="price" required value="0" step="100" min="0">
+
+			<br><br>
+
+			제조일자 : <input type="date" name="made" required>
+
+			<br><br>
+
+			유통기한 : <input type="date" name="expire" required>
+
+		</fieldset>
+
+		<br>
+
+		<input type="submit" value="수정">
+
+	</form>
+</body>
+</html> 

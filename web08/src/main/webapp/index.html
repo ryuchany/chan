@@ -1,0 +1,98 @@
+<!-- 
+	최초 페이지를 index.html로 만드는 이유
+	= 서버 설정에 의해서 주소를 생략할 수 있다
+	= 서버 설정 중 web.xml(운영설정) 파일에 welcome file list 라는 속성으로 지정되어 있다.
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상품 관리 홈페이지</title>
+</head>
+<body>
+	<h1>상품 관리 시스템</h1>
+
+	<h5>
+		<a href="/web08/product/insert.html">상품 등록</a>
+	</h5>
+	<h5>
+		<a href="/web08/product/search.txt">상품 조회</a>
+	</h5>
+
+	<form action="/web08/product/search.txt">
+		<fieldset>
+
+			<legend>상품 검색</legend>
+
+			<select name="column">
+				<option value="name">이름</option>
+				<option value="type">구분</option>
+			</select> <input type="search" name="keyword" required> <input
+				type="submit" value="검색">
+
+		</fieldset>
+	</form>
+	<h5>
+		<a href="#">상품 상세보기</a>
+	</h5>
+	<h5>
+		<a href="/web08/product/update.html">상품 수정</a>
+	</h5>
+	<form action="/web08/product/delete.txt">
+		<fieldset>
+			<legend>상품 삭제</legend>
+			<input type="number" name="no" required placeholder="상품 번호">
+			<input type="submit" value="삭제">
+		</fieldset>
+	</form>
+
+	<!-- 
+		ul(unorder list) 태그 : 같은 항목들을 나열할 때 사용하는 list 태그
+		ol(order list) 태그 : ul과 동일하지만 순서가 부여되는 list 태그
+		li(list item) 태그 : ul 안에서 항목을 정의할 때 사용하는 태그 
+	-->
+	<ol>
+		<li><a href="./product/insert.html">상품 등록</a></li>
+		<li><a href="./product/search.txt">상품 조회</a></li>
+		<li>
+			<form action="./product/search.txt">
+				<fieldset>
+					<legend>상품 검색</legend>
+					<select name="column">
+						<option value="name">이름</option>
+						<option value="type">구분</option>
+					</select> <input type="search" name="keyword" required> <input
+						type="submit" value="검색">
+				</fieldset>
+			</form>
+		</li>
+		<form action="/web08/product/detail.txt">
+			<fieldset>
+				<li>
+					<form action="./product/detail.txt">
+						<fieldset>
+							<legend>상품 상세보기</legend>
+							<input type="number" name="no" required placeholder="상품번호">
+							<input type="submit" value="조회">
+						</fieldset>
+					</form>
+				</li> <input type="number" name="no" required placeholder="상품번호">
+				<input type="submit" value="조회">
+			</fieldset>
+		</form>
+
+		<li><a href="./product/update.html">상품 수정</a></li>
+		<li>
+			<form action="./product/delete.txt">
+				<fieldset>
+					<legend>상품 삭제</legend>
+					<input type="number" name="no" required placeholder="상품 번호">
+					<input type="submit" value="삭제">
+				</fieldset>
+			</form>
+		</li>
+	</ol>
+
+</body>
+</html>
