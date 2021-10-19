@@ -1,95 +1,29 @@
-<%@page import="web09.beans.ProductDto"%>
-<%@page import="java.util.List"%>
-<%@page import="web09.beans.ProductDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%-- 입력 --%>    
-<%
-	String column = request.getParameter("column");
-	String keyword = request.getParameter("keyword");
-%>
-
-<%-- 처리 --%>
-<%
-	boolean search = column != null && keyword != null;
+<%--
+	세션(session)의 특징
+	= 세션은 서버에서 관리하는 사용자를 위한 저장소이다.
+	= 세션은 서버에 총 1개 존재한다.
+	= 세션에서 각 사용자는 16진수 32자리로 구성된 세션ID로 구분한다.
+	= 웹 서비스에서는 사용자가 Browser이다.
 	
-	ProductDao productDao = new ProductDao();
-	List<ProductDto> list;
-	if(search){
-		list = productDao.select(column, keyword);
-	}
-	else{
-		list = productDao.select();
-	}
-%>
+	= 세션에 저장된 정보는 사용자가 임의로 볼 수 없다.
+	= 보안 수준이 매우 높음
+	= 가장 중요한 정보를 이곳에 저장
 
-<%-- 출력 --%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>상품 조회</title>
-</head>
-<body>
+	= 1개의 세션으로 모든 사용자 정보를 관리해야 한다.
+	= 사용자가 늘어날 수록 저장해야할 정보가 많아진다.
+	= 대규모 서비스일 수록 세션을 안쓰려고 노력하는 편이다.
+	
+	= 일정시간동안 요청이없는 세션은 자동으로 소멸 처리가 된다.
+	= 시간은 web.xml 파일에서 지정이 가능하다.
+	
+	= 이러한 저장소를 scope 객체라고 부른다(page, request, session, application)
+	
+	= (주의) 로그인과 세션은 동일한 개념이 아니므로 만료시 꼭 소멸시킬 필요가 없다
+ --%>
+ 
+<h1>세션 ID : <%=session.getId() %></h1>
+<h1>신규 세션? : <%=session.isNew() %></h1>
 
-	<!-- 제목 -->
-	<%if(search){ %>
-	<h1>상품 검색</h1>
-	<%}else{ %>
-	<h1>상품 목록</h1>
-	<%} %>
-
-	<!-- 검색창 -->
-	<form action="test07.jsp">
-		<fieldset>
-			<legend>검색 조건 설정</legend>
-
-			<select name="column">
-				<option value="name">이름</option>
-				<option value="type">유형</option>
-			</select>
-
-			<input type="search" name="keyword" required>
-
-			<input type="submit" value="검색">
-
-		</fieldset>
-	</form>
-
-	<!-- 결과 테이블 -->
-	<table border="1" width="600">
-
-		<!-- 테이블 제목 -->
-		<thead>
-			<tr>
-				<th>no</th>
-				<th>name</th>
-				<th>type</th>
-				<th>price</th>
-				<th>made</th>
-				<th>expire</th>
-			</tr>
-		</thead>
-
-		<!-- 테이블 데이터 -->
-		<tbody align="center">
-
-			<%for(ProductDto productDto : list){ %>
-			<tr>
-				<td><%=productDto.getNo()%></td>
-				<td align="left"><%=productDto.getName()%></td>
-				<td><%=productDto.getType()%></td>
-				<td><%=productDto.getPrice()%></td>
-				<td><%=productDto.getMadeDate()%></td>
-				<td><%=productDto.getExpireDate()%></td>
-			</tr>
-			<%} %>
-
-		</tbody>
-
-	</table>	
-
-</body>
-</html> 
 
