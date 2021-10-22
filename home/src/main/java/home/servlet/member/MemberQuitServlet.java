@@ -30,6 +30,7 @@ public class MemberQuitServlet extends HttpServlet {
 			
 			if(success) {
 				req.getSession().removeAttribute("ses");
+				req.getSession().removeAttribute("grade");
 				//req.getSession().invalidate();
 				
 				resp.sendRedirect("quit_success.jsp");

@@ -40,7 +40,7 @@ public class MemberDao {
 		String sql = "update member "
 							+ "set "
 								+ "member_nick = ?, "
-								+ "member_birth = ?,"
+								+ "member_birth = to_date(?, 'YYYY-MM-DD'),"
 								+ "member_email = ?,"
 								+ "member_phone = ? "
 							+ "where "
@@ -257,6 +257,66 @@ public class MemberDao {
 		con.close();
 
 		return memberDto;
+	}
+	
+	public boolean addPoint(String memberId, int coinAmount) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "update member "
+							+ "set member_point = member_point + ? "
+							+ "where member_id = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, coinAmount);
+		ps.setString(2, memberId);
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
+	}
+
+	public boolean refreshPoint(String memberId) throws Exception {
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "update member set member_point = ("
+				+ "select sum(history_amount) from total_history_record where member_id = ?"
+							+ ") where member_id = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, memberId);
+		ps.setString(2, memberId);
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
+	}
+	
+	//관리자용 수정 기능
+	public boolean editByAdmin(MemberDto memberDto) throws Exception{
+		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+
+		String sql = "update member "
+								+ "set "
+										+ "member_nick=?, "
+										+ "member_birth=to_date(?, 'YYYY-MM-DD'), "
+										+ "member_email=?, "
+										+ "member_phone=?, "
+										+ "member_point=?, "
+										+ "member_grade=? "
+								+ "where member_id=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, memberDto.getMemberNick());
+		ps.setString(2, memberDto.getMemberBirth());
+		ps.setString(3, memberDto.getMemberEmail());
+		ps.setString(4, memberDto.getMemberPhone());
+		ps.setInt(5, memberDto.getMemberPoint());
+		ps.setString(6, memberDto.getMemberGrade());
+		ps.setString(7, memberDto.getMemberId());
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
 	}
 
 //	추가 기능에 대한 아이디어

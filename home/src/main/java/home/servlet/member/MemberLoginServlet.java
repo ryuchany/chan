@@ -37,6 +37,7 @@ public class MemberLoginServlet extends HttpServlet{
 				//= 서블릿에서는 req.getSession() 이라는 명령으로 접근이 가능
 				//= 여기서는 가장 중요한 회원정보인 회원아이디를 ses라는 이름으로 저장
 				req.getSession().setAttribute("ses", memberId);
+				req.getSession().setAttribute("grade", memberDto.getMemberGrade());
 				
 				//resp.sendRedirect("../index.jsp");//상대
 				//resp.sendRedirect("/home/index.jsp");//절대
