@@ -61,12 +61,12 @@
 				   	 <a href="<%=root%>/member/logout.txt">로그아웃</a>
 					 <a href="<%=root%>/member/mypage.jsp">내정보</a>
 					 <a href="<%=root%>/point/charge.jsp">포인트충전</a>
-				     <a href="#">게시판</a>
+				     <a href="<%=root%>/board/list.jsp">게시판</a>
 					 <%}else{ %>
 					 <a href="<%=root%>/index.jsp">홈으로</a>
 					 <a href="<%=root%>/member/join.jsp">회원가입</a>
 					 <a href="<%=root%>/member/login.jsp">로그인</a>
-					 <a href="#">게시판</a>
+					 <a href="<%=root%>/board/list.jsp">게시판</a>
 					<%} %>
 					<%if(admin){ %>
 					<a href="<%=root%>/admin/home.jsp">[관리메뉴]</a>

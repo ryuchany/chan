@@ -105,7 +105,7 @@
 			<td>
 				<a href="detail.jsp?memberId=<%=memberDto.getMemberId()%>">상세</a>
 				<a href="edit.jsp?memberId=<%=memberDto.getMemberId()%>">수정</a>
-				<a href="quit.kh?memberId=<%=memberDto.getMemberId()%>">탈퇴</a>
+				<a href="quit.txt?memberId=<%=memberDto.getMemberId()%>">탈퇴</a>
 			</td>
 		</tr>
 		<%} %>

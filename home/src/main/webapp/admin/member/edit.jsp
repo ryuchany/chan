@@ -20,7 +20,7 @@
 
 <h2>회원 정보 수정</h2>
 
-<form action="edit.kh" method="post">
+<form action="edit.txt" method="post">
 
 	<table border="0">
 		<tbody>

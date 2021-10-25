@@ -18,7 +18,8 @@ import javax.servlet.http.HttpSession;
 		"/member/edit.jsp", "/member/edit.txt", "/member/edit_success.jsp", 
 		"/member/password.jsp", "/member/password.txt", "/member/password_success.jsp", 
 		"/member/quit.txt", 
-		"/point/*"
+		"/point/*",
+		"/board/write.jsp"
 		})
 public class MemberFilter implements Filter {
 	@Override

@@ -70,7 +70,7 @@
 </table>
 
 <h3><a href="edit.jsp?memberId=<%=memberDto.getMemberId()%>">회원 정보 변경</a></h3>
-<h3><a href="quit.kh?memberId=<%=memberDto.getMemberId()%>">회원 강제 탈퇴</a></h3>
+<h3><a href="quit.txt?memberId=<%=memberDto.getMemberId()%>">회원 강제 탈퇴</a></h3>
 
 <hr>
 
@@ -97,8 +97,8 @@
 			<td><%=historyDto.getCancel()%></td>
 			<td>
 				<%if(historyDto.available()){ %>
-				<a href="../point/cancel.kh?historyNo=<%=historyDto.getHistoryNo()%>">취소</a>
-				<a href="<%=request.getContextPath()%>/point/cancel.kh?historyNo=<%=historyDto.getHistoryNo()%>">취소</a>
+				<a href="../point/cancel.txt?historyNo=<%=historyDto.getHistoryNo()%>">취소</a>
+				<a href="<%=request.getContextPath()%>/point/cancel.txt?historyNo=<%=historyDto.getHistoryNo()%>">취소</a>
 				<%} %>
 			</td>
 		</tr>
