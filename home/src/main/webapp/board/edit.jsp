@@ -30,8 +30,9 @@ BoardDto boardDto = boardDao.get(boardNo);
 		<tbody>
 			<tr>
 				<th>번호</th>
-				<td>
-					<input type="text" name="boardNo" required>
+				<td align="center">
+					<input type="hidden" name="boardNo" required value="<%=boardDto.getBoardNo()%>">
+					<%=boardDto.getBoardNo()%>
 				</td>
 			</tr>		
 			<tr>
