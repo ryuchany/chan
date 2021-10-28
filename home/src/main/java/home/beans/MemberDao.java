@@ -9,11 +9,9 @@ import java.util.List;
 //member 테이블에 접근하는 객체
 public class MemberDao {
 
-	public static final String USERNAME = "kh", PASSWORD = "0000";
-
 	//[1] 회원가입 메소드
 	public void join(MemberDto memberDto) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "insert into member("
 								+ "member_id, member_pw, member_nick, "
@@ -35,7 +33,7 @@ public class MemberDao {
 
 //	개인정보 변경 기능
 	public boolean edit(MemberDto memberDto) throws Exception{
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "update member "
 							+ "set "
@@ -61,7 +59,7 @@ public class MemberDao {
 
 //	비밀번호 변경 메소드
 	public boolean editPassword(String memberId, String memberPw, String changePw) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "update member set member_pw = ? where member_id = ? and member_pw = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -83,7 +81,7 @@ public class MemberDao {
 
 //	회원 탈퇴 기능
 	public boolean quit(String memberId) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "delete member where member_id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -95,7 +93,7 @@ public class MemberDao {
 		return result > 0;
 	}
 	public boolean quit(String memberId, String memberPw) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "delete member where member_id = ? and member_pw = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -109,7 +107,7 @@ public class MemberDao {
 	}
 
 	public boolean quit(MemberDto memberDto) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("delete member ");
@@ -162,7 +160,7 @@ public class MemberDao {
 //	목록 조회 기능
 	public List<MemberDto> list() throws Exception {
 
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "select * from member";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -194,7 +192,7 @@ public class MemberDao {
 
 //	회원검색 기능
 	public List<MemberDto> search(String column, String keyword) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "select * from member where instr(#1, ?) > 0 order by #1 asc";
 		sql = sql.replace("#1", column);//정적 치환
@@ -227,7 +225,7 @@ public class MemberDao {
 
 //	회원상세 기능
 	public MemberDto get(String memberId) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "select * from member where member_id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -260,7 +258,7 @@ public class MemberDao {
 	}
 	
 	public boolean addPoint(String memberId, int coinAmount) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "update member "
 							+ "set member_point = member_point + ? "
@@ -276,7 +274,7 @@ public class MemberDao {
 	}
 
 	public boolean refreshPoint(String memberId) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "update member set member_point = ("
 				+ "select sum(history_amount) from total_history_record where member_id = ?"
@@ -293,7 +291,7 @@ public class MemberDao {
 	
 	//관리자용 수정 기능
 	public boolean editByAdmin(MemberDto memberDto) throws Exception{
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "update member "
 								+ "set "
@@ -326,7 +324,7 @@ public class MemberDao {
 	//= VO는 자유로운 형태로 만들 수 있다.
 	//= DTO와 VO를 구분하지 않는 경우도 많이 있다.
 	public List<GroupPointVO> pointByGrade() throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "select member_grade, sum(member_point) total from member "
 									+ "group by member_grade order by total desc";

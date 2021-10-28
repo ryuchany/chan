@@ -8,12 +8,10 @@ import java.util.List;
 
 public class TotalHistoryDao {
 	
-	public static final String USERNAME = "kh", PASSWORD = "0000";	
-	
 	//회원의 포인트내역 조회 기능
 	//= HistoryDto 대신에 취소 여부도 알 수 있도록 새로 만든 TotalHistoryDto를 사용하여 조회
 	public List<TotalHistoryDto> findByMemberId(String memberId) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "select * from total_history where member_id = ? order by history_no desc";
 		PreparedStatement ps = con.prepareStatement(sql);

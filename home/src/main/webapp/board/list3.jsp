@@ -9,11 +9,26 @@
 	//Pagination 모듈을 이용하여 계산을 처리하도록 위임
 	Pagination pagination = new Pagination(request);
 	//pagination.setPageSize(15);
-	//pagination.setBlockSize(5);   
-	pagination.calculate(); 	
+	//pagination.setBlockSize(5);  
+	pagination.calculate(); 
 %>
 
 <%=pagination.toString()%>
+
+<%
+	BoardDao boardDao = new BoardDao();
+	List<BoardDto> list;
+	if(pagination.isSearch()){ 
+		//list = boardDao.search(column, keyword);//모든검색결과
+		list = boardDao.searchByRownum(
+					pagination.getColumn(), pagination.getKeyword(),
+					pagination.getBegin(), pagination.getEnd());//원하는 검색결과 구간
+	}
+	else{
+		//list = boardDao.list();//모든목록
+		list = boardDao.listByRownum(pagination.getBegin(), pagination.getEnd());//원하는 구간 목록
+	}
+%>
 
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -35,10 +50,12 @@
 		</tr>
 	</thead>
 	<tbody align="center">
-		<%for(BoardDto boardDto : pagination.getList()){ %>
+		<%for(BoardDto boardDto : list){ %>
 		<tr>
 			<td><%=boardDto.getBoardNo()%></td>
-			<td align="left"><a href="detail.jsp?boardNo=<%=boardDto.getBoardNo()%>"><%=boardDto.getBoardTitle()%></a></td>
+			<td align="left">
+				<a href="detail.jsp?boardNo=<%=boardDto.getBoardNo()%>"><%=boardDto.getBoardTitle()%></a>
+			</td>
 			<td><%=boardDto.getBoardWriter()%></td>
 			<td><%=boardDto.getBoardTime()%></td>
 			<td><%=boardDto.getBoardRead()%></td>
@@ -54,15 +71,15 @@
 <br><br>
 <%if(pagination.isPreviousAvailable()){ %>
 	<%if(pagination.isSearch()){ %>
-	<!-- 검색용 링크 -->
-	<a href="list.jsp?column=<%=pagination.getColumn()%>&keyword=<%=pagination.getKeyword()%>&p=<%=pagination.getPreviousBlock()%>">&lt;</a>
+		<!-- 검색용 링크 -->
+		<a href="list.jsp?column=<%=pagination.getColumn()%>&keyword=<%=pagination.getKeyword()%>&p=<%=pagination.getPreviousBlock()%>">&lt;</a>
 	<%} else { %>
-	<!-- 목록용 링크 -->
-	<a href="list.jsp?p=<%=pagination.getPreviousBlock()%>">&lt;</a>
+		<!-- 목록용 링크 -->
+		<a href="list.jsp?p=<%=pagination.getPreviousBlock()%>">&lt;</a>
 	<%} %>
-	<%} else { %>
-	<a>&lt;</a>
-	<%} %>
+<%} else { %>
+	 <a>&lt;</a>
+<%} %> 
 
 <%for(int i = pagination.getStartBlock(); i <= pagination.getRealLastBlock(); i++){ %>
 	<%if(pagination.isSearch()){ %>
@@ -85,6 +102,7 @@
 <%} else {%>
 	<a>&gt;</a>
 <%} %>
+
 <br><br>
 
 <!-- 검색창 -->

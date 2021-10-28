@@ -5,11 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class CancelDao {
-	public static final String USERNAME = "kh", PASSWORD = "kh";
 
 	//1. 결제 취소 기능(C)
 	public void insert(int historyNo) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "insert into cancel values(?)";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -23,7 +22,7 @@ public class CancelDao {
 	//= true가 반환되면 데이터가 없어서 결제 취소가 가능하다는 의미이다.
 	//= false가 반환되면 데이터가 있어서 결제 취소가 불가능하다는 의미이다.
 	public boolean available(int historyNo) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "select * from cancel where history_no = ?";
 		PreparedStatement ps = con.prepareStatement(sql);

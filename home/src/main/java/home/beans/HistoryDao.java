@@ -9,10 +9,8 @@ import java.util.List;
 
 public class HistoryDao {
 
-	public static final String USERNAME = "kh", PASSWORD = "0000";
-
 	public void insert(HistoryDto historyDto) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "insert into history values(history_seq.nextval, ?, sysdate, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -26,7 +24,7 @@ public class HistoryDao {
 	
 	//회원의 포인트내역 조회 기능
 	public List<HistoryDto> findByMemberId(String memberId) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "select * from history where member_id = ? order by history_no desc";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -53,7 +51,7 @@ public class HistoryDao {
 	}
 	
 	public HistoryDto get(int historyNo) throws Exception {
-		Connection con = JdbcUtils.connect(USERNAME, PASSWORD);
+		Connection con = JdbcUtils.connect2();
 
 		String sql = "select * from history where history_no = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
