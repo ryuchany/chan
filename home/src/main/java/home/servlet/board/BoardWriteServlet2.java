@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import home.beans.BoardDao;
 import home.beans.BoardDto;
 
-@WebServlet(urlPatterns = "/board/write.txt")
-public class BoardWriteServlet extends HttpServlet{
+//파일 업로드가 
+@WebServlet(urlPatterns = "/board/write2.txt")
+public class BoardWriteServlet2 extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {

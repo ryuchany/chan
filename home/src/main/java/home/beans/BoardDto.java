@@ -79,4 +79,14 @@ public class BoardDto {
 		this.boardTime = boardTime;
 	}
 
+	//추가 : 댓글이 존재하는지 확인하는 메소드
+	public boolean isReplyExist() {
+		return this.boardReply > 0;
+	}
+	
+	//추가 : 답변글인지 확인하는 메소드
+	public boolean hasDepth() {
+		return this.boardDepth > 0;
+	}
+	
 }

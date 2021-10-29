@@ -67,7 +67,8 @@ public class Pagination {
 			this.list = boardDao.searchByRownum(column, keyword, begin, end);
 		}
 		else {
-			this.list = boardDao.listByRownum(begin, end);
+			//this.list = boardDao.listByRownum(begin, end);//일반
+			this.list = boardDao.listByTreeSort(begin, end);//계층형
 		}
 	}
 	

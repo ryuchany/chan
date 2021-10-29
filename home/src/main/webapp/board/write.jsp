@@ -1,15 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- 입력 --%>
+<%-- 입력 : 답글일 경우에는 boardSuperno라는 값이 전달된다. --%>
+<%
+	String boardSuperno = request.getParameter("boardSuperno");
+%>
 
 <%-- 처리 --%>
+<%
+	boolean answer = boardSuperno != null;
+	String title = answer ? "답글 작성" : "새글 작성";
+%>
 
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<h2>게시글 작성</h2>
+<h2><%=title%></h2>
 
 <form action="write.txt" method="post">
+
+<%-- 답글일 경우에는 반드시 "상위글번호(boardSuperno)" 를 처리페이지로 전송해야 한다 --%>
+<%if(answer){ %>
+<input type="hidden" name="boardSuperno" value="<%=boardSuperno%>">
+<%} %>
 
 <table border="0">
 	<tbody>

@@ -28,20 +28,54 @@
 	<thead>
 		<tr>
 			<th>번호</th>
-			<th width="45%">제목</th>
+			<th width="40%">제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회수</th>
+			<th>상위글</th>
+			<th>그룹</th>
+			<th>차수</th>
 		</tr>
 	</thead>
 	<tbody align="center">
 		<%for(BoardDto boardDto : pagination.getList()){ %>
 		<tr>
 			<td><%=boardDto.getBoardNo()%></td>
-			<td align="left"><a href="detail.jsp?boardNo=<%=boardDto.getBoardNo()%>"><%=boardDto.getBoardTitle()%></a></td>
+			<td align="left">
+			
+				<%-- 
+					게시글의 제목을 출력하기 전에 차수에 따라 띄어쓰기를 진행한다
+					띄어쓰기는 HTML 특수문자인 &nbsp; 을 사용한다.
+					답변글에는 reply icon을 추가로 출력한다. 
+				--%>
+				<%
+					//if(boardDto.getBoardDepth() > 0){
+					if(boardDto.hasDepth()){ 
+				%>
+					<%for(int i=0; i < boardDto.getBoardDepth(); i++){ %>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<%} %>
+
+					<img src="<%=request.getContextPath()%>/resource/image/reply.png" width="15" height="15">
+				<%} %>
+				<a href="detail.jsp?boardNo=<%=boardDto.getBoardNo()%>">
+					<%=boardDto.getBoardTitle()%>
+				</a>
+
+				<!-- 제목 뒤에 댓글 개수를 출력한다 -->
+				<%
+				//if(boardDto.getBoardReply() > 0){
+				if(boardDto.isReplyExist()){
+				%>
+					[<%=boardDto.getBoardReply()%>]
+				<%} %>
+			</td>
 			<td><%=boardDto.getBoardWriter()%></td>
 			<td><%=boardDto.getBoardTime()%></td>
 			<td><%=boardDto.getBoardRead()%></td>
+			<td><%=boardDto.getBoardSuperno()%></td>
+			<td><%=boardDto.getBoardGroupno()%></td>
+			<td><%=boardDto.getBoardDepth()%></td>
 		</tr>
 		<%} %>
 	</tbody>

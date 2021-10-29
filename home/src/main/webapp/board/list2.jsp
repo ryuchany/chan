@@ -54,7 +54,7 @@ p = <%=p%>, begin = <%=begin%>, end = <%=end%>
 	}
 	
 	//마지막 블록 번호를 계산
-	int lastBlock = (count - 1) / bsize + 1;
+	int lastBlock = (count - 1) / psize + 1;
 	
 	int startBlock = (p - 1) / bsize * bsize + 1;
 	int finishBlock = startBlock + (bsize - 1);
