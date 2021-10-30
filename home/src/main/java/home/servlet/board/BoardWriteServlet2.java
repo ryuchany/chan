@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import home.beans.BoardDao;
 import home.beans.BoardDto;
 
-//파일 업로드가 
+//파일 업로드가 적용되기 전의 게시글 등록 서블릿
 @WebServlet(urlPatterns = "/board/write2.txt")
 public class BoardWriteServlet2 extends HttpServlet{
 	@Override

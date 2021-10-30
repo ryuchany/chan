@@ -430,5 +430,37 @@ public class BoardDao {
 
 		con.close();
 	}
-	
+
+	//일치 검색 기능
+		public List<BoardDto> searchEquals(String column, String keyword) throws Exception {
+			Connection con = JdbcUtils.connect2();
+
+			String sql = "select * from board where #1 = ? order by board_no desc";
+			sql = sql.replace("#1", column);//정적 바인딩
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, keyword);
+			ResultSet rs = ps.executeQuery();
+
+			List<BoardDto> list = new ArrayList<>();
+			while(rs.next()) {
+				BoardDto boardDto = new BoardDto();
+
+				boardDto.setBoardNo(rs.getInt("board_no"));
+				boardDto.setBoardWriter(rs.getString("board_writer"));
+				boardDto.setBoardTitle(rs.getString("board_title"));
+				boardDto.setBoardContent(rs.getString("board_content"));
+				boardDto.setBoardTime(rs.getDate("board_time"));
+				boardDto.setBoardRead(rs.getInt("board_read"));
+				boardDto.setBoardReply(rs.getInt("board_reply"));
+				boardDto.setBoardSuperno(rs.getInt("board_superno"));
+				boardDto.setBoardGroupno(rs.getInt("board_groupno"));
+				boardDto.setBoardDepth(rs.getInt("board_depth"));
+
+				list.add(boardDto);
+			}
+
+			con.close();
+
+			return list;
+		}
 }

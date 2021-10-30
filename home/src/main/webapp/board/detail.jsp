@@ -1,3 +1,5 @@
+<%@page import="home.beans.BoardFileDto"%>
+<%@page import="home.beans.BoardFileDao"%>
 <%@page import="home.beans.ReplyDto"%>
 <%@page import="java.util.List"%>
 <%@page import="home.beans.ReplyDao"%>
@@ -83,6 +85,13 @@ boolean owner = boardDto.getBoardWriter().equals(memberId);
 	//현재 게시글에 대한 댓글을 조회
 	ReplyDao replyDao = new ReplyDao();
 	List<ReplyDto> replyList = replyDao.list(boardNo);
+%>
+
+<%
+	//현재 게시글에 대한 파일정보를 조회
+	BoardFileDao boardFileDao = new BoardFileDao();
+	List<BoardFileDto> boardFileList = boardFileDao.find(boardNo);//파일이 여러 개일 경우
+	//BoardFileDto boardFileDto = boardFileDao.find2(boardNo);//파일이 한 개일 경우
 %>
 
 <%-- 출력 --%>
@@ -202,4 +211,18 @@ boolean owner = boardDto.getBoardWriter().equals(memberId);
 	</table>
 <%} %>
 
+<%-- 첨부파일이 있다면 첨부파일을 다운받을 수 있는 링크를 제공 --%>
+<%if(!boardFileList.isEmpty()){ %>
+	<%for(BoardFileDto boardFileDto : boardFileList){ %>
+		<h6>
+			<%=boardFileDto.getBoardFileUploadname() %>
+			(<%=boardFileDto.getBoardFileSize()%> bytes)
+			<a href="file/download.txt?boardFileNo=<%=boardFileDto.getBoardFileNo()%>">
+				다운로드
+			</a>
+
+<%-- 			<img src="file/download.txt?boardFileNo=<%=boardFileDto.getBoardFileNo()%>" width="50" height="50"> --%>
+		</h6>
+	<%} %>
+<%} %>
 <jsp:include page="/template/footer.jsp"></jsp:include>

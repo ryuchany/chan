@@ -5,24 +5,26 @@
 
 <h1>회원가입</h1>
 
+<%-- <form action="<%=request.getContextPath()%>/member/join.kh"> --%>
+
 <!-- 
 	form 전송방식
 	= form은 데이터 전송방식을 GET/POST 중에서 고를 수 있다.
 	= 적지 않으면 GET 형태로 전송한다.
-	= GET은 주소 뒷부분에 ?를 시작으로 한 파라미터 문자열(Query String) 형태로 데이터를 첨부
+	= GET은 주소 뒷부분에 ? 를 시작으로 한 파라미터 문자열(Query String) 형태로 데이터를 첨부
 		= 장점 : 편하다. form이 아니어도 a태그 등으로도 데이터를 전달할 수 있다.
 		= 단점 : 데이터가 주소에 노출, 주소는 256byte까지 밖에 작성이 안되므로 크기 제한이 있음
-	= POST는 주소 뒷부분이 아닌 HTTP Body에 데이터를 첨부
+	= POST는 주소 뒷부분이 아닌 HTTP Body 에 데이터를 첨부
 		= 장점 : 데이터가 주소에 노출되지 않음. 첨부 데이터 길이가 무제한
 		= 단점 : 불편하다. form이 있어야 전송이 가능하며, 데이터가 ASCII로 변환되어 전송된다.
-	= GET/POST는 보안과 관계가 없다.	
+	= GET/POST는 보안과 관계가 없다.
  -->
-<form action="join.txt" method="post" enctype="multipart/form-data">
-	
+<form action="join.txt" method="post">
+
 	<table border="0">
 		<tbody>
 			<tr>
-				<th>아이디</th>
+				<th>아이디</th> 
 				<td>
 					<input type="text" name="memberId" required>
 				</td>
@@ -58,14 +60,6 @@
 				</td>
 			</tr>
 			<tr>
-
-		<tr>
-			<th>프로필</th>
-			<td>
-				<input type="file" name="attach" accept="image/*">
-			</td>
-		</tr>
-		
 				<!-- 
 					colspan을 사용하면 셀 1개를 특정 칸 수만큼 늘릴 수 있다.
 					rowspan을 사용하면 셀 1개를 특정 줄 수만큼 늘릴 수 있다.
@@ -77,6 +71,7 @@
 			</tr>
 		</tbody>
 	</table>
+
 </form>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
