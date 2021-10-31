@@ -38,7 +38,7 @@
 	BoardDao boardDao = new BoardDao();
 	List<BoardDto> myBoardList = boardDao.searchEquals("board_writer", memberId);
 %> 
-
+	
 <%
 	//프로필 이미지 조회 : 아이디로 해도됨(1-1관계)
 	MemberProfileDao memberProfileDao = new MemberProfileDao();
