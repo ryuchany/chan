@@ -12,8 +12,6 @@ public class ExamDto {
 	private String type;
 	private int score;
 
-	
-	
 	@Override
 	public String toString() {
 		return "ExamDto [examId=" + examId + ", student=" + student + ", subject=" + subject + ", type=" + type
