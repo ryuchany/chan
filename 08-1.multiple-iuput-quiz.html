@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인문제1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        div {
+            border:1px dotted gray;
+        }
+
+        /*
+            컨테이너에는 화면의 전체 폭을 설정해야 한다.
+        */
+        .container {
+            width:400px;
+        }
+
+        /*
+            줄(row) 사이는 일정 간격 벌어져 있도록 설정한다.
+        */
+        .row {
+            margin:20px 0px;
+            text-align: center;
+        }
+
+        /*
+            내부 항목들은 바깥 영역을 채우게 구성한다.
+        */
+        .logo-image {
+            width:200px;
+        }
+
+        .login-input {
+            width:100%;
+            font-size:15px;
+            padding:15px;
+        }
+
+        .login-btn {
+            width:100%;
+            font-size:20px;
+            padding:12px;
+            color:white;
+            background-color:rgb(255, 171, 56);
+            border:none;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        div 태그 : 아무 효과도 없는 비어있는 영역(block 속성을 가짐)        
+    -->
+
+    <div class="container">
+        <div class="row">
+            <img src="./image/ppomppu-logo.png" class="logo-image">
+        </div>
+        <div class="row">
+            <input type="text" name="memberId" placeholder="아이디 입력" required class="login-input">
+        </div>
+        <div class="row">
+            <input type="password" name="memberPw" placeholder="비밀번호 입력" required class="login-input">
+        </div>
+        <div class="row">
+            <input type="submit" value="로그인" class="login-btn">
+        </div>
+    </div>
+</body>
+</html>

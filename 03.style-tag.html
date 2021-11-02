@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>style 태그 사용</title>
+    <!--
+        style 태그를 사용한 디자인
+        = html에는 <style> 태그가 존재한다.
+        = <style> 영역에서는 디자인 관련 처리 코드만 작성
+        = 별도의 영역에 디자인 설정을 해야하므로 "대상 지정"이 필요
+        = "대상 지정"을 위한 문법을 "선택자(selector)"라고 함
+        = <style> 영역은 화면에 표시되지는 않는다
+        = 따라서 <head>에 배치하는 것이 일반적이다.
+    -->
+    <style>
+        /* h1 태그에 color 를 red 로 설정 */
+        h1 {
+            color:red;
+        }
+        /* h1 태그 중 첫 번째에만 배경을 yellow로 설정 */
+        h1:nth-child(1) {
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Design 1</h1>
+    <h1>CSS Design 2</h1>
+    <h1>CSS Design 3</h1>
+    <h1>CSS Design 4</h1>
+    <h1>CSS Design 5</h1>
+</body>
+</html>
