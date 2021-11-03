@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /*
+            textarea 스타일링
+            = 우리가 만드는 페이지에서 textarea의 가로 변경은 허용하지 않는다.
+            = textarea는 기본적으로 크기 변경이 불가능하게 만들고, 세로 변경은 class="vertical"을 추가
+        */
+        textarea {
+            resize:none;
+        }
+        textarea.vertical {
+            resize: vertical;
+            min-height:200px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="container-700 container-center">
+            <div class="row center">
+                <h1>새글 작성</h1>
+            </div>
+            <div class="row">
+                <label>제목</label>
+                <input type="text" name="" required class="form-input" autocomplete="off">
+            </div>
+            <div class="row">
+                <label>내용</label>
+                <textarea name="" required class="form-input" rows="10"></textarea>
+            </div>
+            <div class="row">
+                <label class="form-block">첨부파일</label>
+                <input type="file" name="" class="form-input form-inline">
+            </div>
+            <div class="row">
+                <input type="submit" value="게시글 등록" class="form-btn">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뽐뿌 로그인</title>
+    <link rel="stylesheet" type="text/css" href="./commons.css">
+    <style>
+        .logo-image {
+            width:200px;
+            margin:20px 0px;
+        }
+        /* 디자인 재정의 */
+        .form-input {
+            border:1px solid rgb(255, 171, 56);
+        }
+        .form-btn {
+            background-color: rgb(255, 171, 56);
+            border:none;
+        }
+        div {
+            border:none;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="container-400 container-center">
+            <div class="row center">
+                <img src="./image/ppomppu-logo.png" class="logo-image">
+            </div>
+            <div class="row">
+                <input type="text" name="memberId" placeholder="아이디" required class="form-input">
+            </div>
+            <div class="row">
+                <input type="password" name="memberPw" placeholder="비밀번호" required class="form-input">
+            </div>
+            <div class="row">
+                <input type="submit" value="로그인" class="form-btn">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

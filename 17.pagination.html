@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /*
+            페이징 스타일링
+        
+            연계 선택자(자손 선택자)
+            = .pagination 안에 있는 a태그만 선택하고 싶은 경우
+            = .pagination > a
+            = 모든 a태그를 수정하면 위험하므로 원하는 영역으로 제한하여 수정
+                   
+            REM
+            = 글자 크기에 비례하여 설정하는 비율형 크기
+            = 2.5rem은 기본 글자 높이의 2.5배라는 의미
+            = 글자 크기가 변할 수 있는 경우 유용하게 사용 가능
+        */
+        .pagination {
+            text-align: center;
+        }
+        .pagination > a, 
+        .pagination > a:link, 
+        .pagination > a:visited {
+            color:black;
+            text-decoration: none;
+            border:1px solid gray;
+            min-width:2.5rem;
+            display: inline-block;
+            text-align: center;
+            padding:0.5rem;    
+        }
+        .pagination > a:hover,
+        .pagination > a.active{
+            color:red;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        바깥을 감쌀 div태그, 이동할 수 있는 링크인 a태그로 pagination navigator를 구현
+    -->
+    <div class="pagination">
+        <a href="#">&lt;</a>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#" class="active">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">7</a>
+        <a href="#">8</a>
+        <a href="#">9</a>
+        <a href="#">10</a>
+        <a href="#">&gt;</a>
+    </div>
+</body>
+</html>
