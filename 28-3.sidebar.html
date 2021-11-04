@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sidebar 만들기</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /* 미관상 체크박스를 숨기고 라벨을 표시 */
+        .sidebar-button {
+            position:fixed;
+            top:15px;
+            left:15px;
+            z-index: 100000;
+            font-size: 30px;
+            border:1px solid black;
+            width:50px;
+            height:50px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #sidebar-switch {
+            display: none;
+        }
+        /* 체크박스(#sidebar-switch) 뒤에 있는 사이드바(.sidebar) 디자인 */
+        #sidebar-switch + .sidebar {
+            position: fixed;
+            top:0;
+            left:0;
+            bottom:0;
+            width:250px;
+            background-color: yellow;
+            z-index: 99999;
+
+            /*
+                체크박스의 체크 여부에 따라서 현재 margin-left 이 변하고 있다.
+                = 애니메이션을 통해서 margin-left가 0.5초에 걸쳐서 변하도록 설정
+                = 타이밍 함수를 이용하여 애니메이션 템포 조절이 가능
+                    = linear : 일정한 변화
+                    = ease-in-out : 처음과 끝을 느리게 변화
+            */
+            transition: margin-left 0.5s ease-in-out;
+        }
+        /* 체크박스(#sidebar-switch) 체크 시 뒤에 있는 사이드바(.sidebar) 디자인 */
+        #sidebar-switch:checked + .sidebar {
+            margin-left: -250px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <label for="sidebar-switch" class="sidebar-button">&#9776;</label> -->
+    <label for="sidebar-switch" class="sidebar-button">&#8801;</label>
+    <input type="checkbox" id="sidebar-switch">
+    <div class="sidebar"></div>
+</body>
+</html>

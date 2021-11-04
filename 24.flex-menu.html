@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex menu</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        .menu-wrapper > a {
+            width:150px;
+            padding:0.5rem;
+            text-align: center;
+            text-decoration: none;
+            color:black;
+            font-size: 25px;
+        }
+        .menu-wrapper > a:hover {
+            color:red;
+        }
+
+        /*
+            이 스타일은 폭이 좁아져서 메뉴가 틀어지는 것을 방지하기 위해 특정 폭 이하에서만 생성되는 스타일
+            = 조건부 스타일
+            = @media 쿼리
+            = 많이 사용할 수록 어렵기 때문에 기본 스타일의 일부를 변경하는 형태로 작성
+        */
+        @media screen and (max-width:600px){
+            .menu-wrapper {
+                flex-direction: column;
+            }
+            .menu-wrapper > a {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container menu-wrapper">
+        <a href="#">홈으로</a>
+        <a href="#">게시판</a>
+        <a href="#">회원가입</a>
+        <a href="#">로그인</a>
+    </div>
+</body>
+</html>

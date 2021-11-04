@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다단 레이아웃</title> 
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /*
+           float에서 가장 주의해야 하는 점은 다른 일반 화면과의 조화를 위한 처리이다.
+            = float 영역이 끝나면 반드시 끝났음을 알리는 처리를 수행해야 한다.
+            = 비어있는 div를 하나 만들고 clear 속성을 설정
+        */
+
+        .layer {
+            height:200px;
+            width:50%;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color:tomato;">
+        <h1>상단 제목</h1>
+    </div>
+
+    <div class="layer">
+        <div class="row">1단 1줄</div>
+        <div class="row">1단 2줄</div>
+        <div class="row">1단 3줄</div>
+    </div>
+    <div class="layer">2단</div>
+
+    <!-- 이 영역은 clear를 위해 어쩔 수 없이 만들어야 하는 아픈 손가락 -->
+    <div style="clear:both;"></div>
+
+    <div style="background-color: yellow;">
+        <h2>하단 내용</h2>
+    </div>
+</body>
+</html>

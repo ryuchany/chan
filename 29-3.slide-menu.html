@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드 메뉴</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /* 
+            .slide-menu 에 대한 디자인 
+            1. 최초에 모든 항목은 숨겨져 있어야 한다.
+            2. 메뉴 영역에 마우스가 올라가면 항목이 표시되도록 구현
+        */
+        .slide-menu ul {
+            display:none;
+        }
+        .slide-menu > li:hover > ul {
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 메뉴는 계층형 구조를 가지므로 list 태그로 구현하기에 적합하다 -->
+    <ul class="slide-menu">
+        <li>
+            <a href="#">메뉴1</a>
+            <ul>
+                <li><a href="#">항목1</a></li>
+                <li><a href="#">항목2</a></li>
+                <li><a href="#">항목3</a></li>
+                <li><a href="#">항목4</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">메뉴2</a>
+            <ul>
+                <li><a href="#">항목1</a></li>
+                <li><a href="#">항목2</a></li>
+                <li><a href="#">항목3</a></li>
+                <li><a href="#">항목4</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">메뉴3</a>
+            <ul>
+                <li><a href="#">항목1</a></li>
+                <li><a href="#">항목2</a></li>
+                <li><a href="#">항목3</a></li>
+                <li><a href="#">항목4</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">메뉴4</a>
+            <ul>
+                <li><a href="#">항목1</a></li>
+                <li><a href="#">항목2</a></li>
+                <li><a href="#">항목3</a></li>
+                <li><a href="#">항목4</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

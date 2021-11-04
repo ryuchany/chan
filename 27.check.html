@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /*
+            디자인에서 두 가지 상태를 번갈아 보여주는 경우
+            = :hover , :focus , :checked , :active
+            :checked 를 이용한 디자인 토글(toggle) 구현
+            연계 선택자
+                +   뒤에 있는 1개의 태그 선택
+                ~   뒤에 있는 모든 태그 선택
+        */
+
+        /* 체크된 체크박스의 라벨은 파란색으로, 체크되지 않은 체크박스의 라벨은 빨간색으로 표시 */
+        .chk + label {
+            color:red;
+        }
+        .chk:checked + label {
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" class="chk">
+    <label>1번 약관에 동의합니다</label>
+
+    <hr>
+
+    <input type="checkbox" class="chk">
+    <label>2번 약관에 동의합니다</label>
+
+    <hr>
+
+    <input type="checkbox" class="chk">
+    <label>3번 약관에 동의합니다</label>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다단 레이아웃</title> 
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /*
+           결론
+           1. float는 반드시 필요한 상황이 있다.
+           2. 기존 화면과 충돌이 나는 상황은 싫다.
+           3. float 전용 영역을 만들어서 모든 상황을 그 안에서 해결하도록 처리한다.
+           가상 선택자
+           = 존재하지 않는 영역을 가상으로 선택하여 디자인을 부여할 수 있다.
+           = 원래 없는 영역이기 때문에 내용을 뭐라도 적어야 한다(빈칸이라도)
+        */
+        .float-container::after {
+            content:"";
+            display: block;
+            clear: both;
+        }
+
+        .layer {
+            height:200px;
+            width:50%;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color:tomato;">
+        <h1>상단 제목</h1>
+    </div>
+
+    <!-- float 전용 공간 -->
+    <div class="float-container">
+        <div class="layer">
+            <div class="row">1단 1줄</div>
+            <div class="row">1단 2줄</div>
+            <div class="row">1단 3줄</div>
+        </div>
+        <div class="layer">2단</div>
+    </div>
+
+    <div style="background-color: yellow;">
+        <h2>하단 내용</h2>
+    </div>
+</body>
+</html

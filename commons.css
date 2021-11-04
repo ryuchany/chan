@@ -275,3 +275,36 @@ textarea.vertical {
 .table.table-stripe > tbody > tr:nth-child(2n) {
     background-color:#EEEEEE;
 }
+/*
+    float 스타일링
+    1. float는 반드시 필요한 상황이 있다.
+    2. 기존 화면과 충돌이 나는 상황은 싫다.
+    3. float 전용 영역을 만들어서 모든 상황을 그 안에서 해결하도록 처리한다.
+    가상 선택자
+    = 존재하지 않는 영역을 가상으로 선택하여 디자인을 부여할 수 있다.
+    = 원래 없는 영역이기 때문에 내용을 뭐라도 적어야 한다(빈칸이라도)
+*/
+.float-container::after {
+    content:"";
+    display: block;
+    clear: both;
+}
+.float-container > .float-item-left {
+    float:left;
+}
+.float-container > .float-item-right {
+    float:right;
+}
+
+/*
+    flex layout
+    = display:flex; 를 통해 영역 내부의 요소를 float처럼 처리할 수 있다.
+    = clear 처리가 필요하지 않다.
+    = 높이를 자동으로 맞춰준다.
+    = 비율 설정을 지원(flex-grow)
+    = 배치 순서 변경을 지원(flex-direction)
+*/
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}

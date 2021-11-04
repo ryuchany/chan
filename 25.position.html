@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position 이해</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /*
+            Position 속성
+            = 요소들의 배치 방식을 결정하는 속성
+            일반적인 배치 = static, relative
+            특수한 위치에 배치 = absolute, fixed
+                - absolute : 문서상의 특정 위치를 지정하여 배치
+                - fixed : 화면(viewport)상의 특정 위치를 지정하여 배치
+            위치를 지정하는 속성 = top, bottom, left, right
+            표시순서를 지정하는 속성 = z-index
+        */
+        body {
+            width:5000px;
+            height:50000px;
+        }
+        .a, .b, .c {
+            width:100px;
+            height:100px;
+            position:absolute;
+        }
+        .a {
+            background-color: #fd9644;
+            top:20px;
+            left:20px;
+            z-index: 3;
+        }
+        .b {
+            background-color: #fed330;
+            top:80px;
+            left:80px;
+            z-index: 2;
+        }
+        .c {
+            background-color: #26de81;
+            top:140px;
+            left:140px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="a">a</div>
+    <div class="b">b</div>
+    <div class="c">c</div>
+</body>
+</html>

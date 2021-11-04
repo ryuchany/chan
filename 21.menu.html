@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menu 구현</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        .float-container > .float-item-left {
+            float:left;
+        }
+        .float-container > .float-item-right {
+            float:right;
+        }
+
+        .menu-wrapper {
+            background-color: black;
+        }
+        .menu-wrapper > a {
+            color:white;
+            text-decoration: none;
+            width:150px;
+            text-align: center;
+            padding:0.5rem;
+            font-size: 25px;
+        }
+        .menu-wrapper > a:hover {
+            background-color:#333333;
+        }
+    </style>
+</head>
+<body>
+    <div class="float-container menu-wrapper">
+        <a href="#" class="float-item-left">홈으로</a>
+        <a href="#" class="float-item-right">로그인</a>
+        <a href="#" class="float-item-right">회원가입</a>
+        <a href="#" class="float-item-left">게시판</a>
+    </div>
+</body>
+</html>

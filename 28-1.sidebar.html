@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sidebar 만들기</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /* 테스트를 위해 체크박스가 고정적으로 보이도록 표시 */
+        #sidebar-switch {
+            position:fixed;
+            top:5px;
+            left:5px;
+            z-index: 100000;
+        }
+        /* 체크박스(#sidebar-switch) 뒤에 있는 사이드바(.sidebar) 디자인 */
+        #sidebar-switch + .sidebar {
+            position: fixed;
+            top:0;
+            left:0;
+            bottom:0;
+            width:250px;
+            background-color: yellow;
+            z-index: 99999;
+        }
+        /* 체크박스(#sidebar-switch) 체크 시 뒤에 있는 사이드바(.sidebar) 디자인 */
+        #sidebar-switch:checked + .sidebar {
+            margin-left: -250px;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="sidebar-switch">
+    <div class="sidebar"></div>
+</body>
+</html>
