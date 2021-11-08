@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크기</title>
+    <script>
+        function small(){
+            //id=sample인 이미지의 폭을 100px, 높이를 100px로 설정
+
+            var image = document.querySelector("#sample");
+            //var image = document.getElementById("sample");
+
+            image.width = 100;
+            image.height = 100;
+            //image.width = "100";
+            //image.height = "100";
+        }
+        function normal(){
+            var image = document.querySelector("#sample");
+            image.width = 200;
+            image.height = 200;
+        }
+        function big(){
+            var image = document.querySelector("#sample");
+            image.width = 300;
+            image.height = 300;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="small();">작게</button>
+    <button onclick="normal();">보통</button>
+    <button onclick="big();">크게</button>
+    <hr>
+    <img src="./image/loading.gif" width="200" height="200" id="sample">
+</body>
+</html>
