@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 예제</title>
+    <script>
+        //1. 언제든지 부를 수 있는 함수를 하나 생성
+        function test(){
+            console.log("이벤트 발생!");
+        }
+    </script>
+</head>
+<body>
+    <!-- 2.test 함수를 부를 수 있도록 버튼을 생성 -->
+    <!-- 3.클릭하면(onclick) test 함수를 실행하도록 코드를 작성(이벤트 바인딩) -->
+    <button onclick="test()">클릭하세요</button>
+</body>
+</html>
