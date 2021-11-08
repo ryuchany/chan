@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기소개서</title>
+    <script>
+        function answerLengthCheck(){
+            //준비 : #answer , #answer-length
+            var textarea = document.querySelector("#answer");//document.getElementById("answer");
+            var span = document.querySelector("#answer-length");//document.getElementById("answer-length");
+
+            var len = textarea.value.length;
+            span.textContent = len;
+
+            //만약 1000글자가 넘어간다면 강조 표시
+            if(len > 1000){
+                span.style.color = "red";
+            }
+            else{
+                span.style.color = "black";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>자기소개서</h1>
+    <h2>(Q) 본인 성격의 장/단점을 기술하세요.</h2>
+    <textarea id="answer" rows="10" cols="100" oninput="answerLengthCheck();"></textarea>
+    <div>
+        <span id="answer-length">0</span> / 1000
+    </div>
+</body>
+</html>

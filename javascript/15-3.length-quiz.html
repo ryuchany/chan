@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기소개서</title>
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <style>
+
+    </style>
+    <script>
+        function answerLengthCheck(){
+            //준비 : #answer , #answer-length
+            var textarea = document.querySelector("#answer");//document.getElementById("answer");
+            var span = document.querySelector("#answer-length");//document.getElementById("answer-length");
+
+            var len = textarea.value.length;
+
+            //만약 1000글자가 넘어간다면 넘어간 만큼 글자를 제거
+            while(len > 1000){
+                textarea.value = textarea.value.substring(0, textarea.value.length-1);
+                len--;
+            }
+
+            //글자 정리 후 길이 설정
+            span.textContent = len;
+        }
+    </script>
+</head>
+<body>
+    <div class="container-700 container-center">
+        <div class="row center">
+            <h1>자기소개서</h1>
+        </div>
+        <div class="row">
+            <h2>(Q) 본인 성격의 장/단점을 기술하세요.</h2>
+        </div>
+        <div class="row">
+            <textarea id="answer" rows="10" class="form-input" oninput="answerLengthCheck();"></textarea>
+        </div>
+        <div class="row right">
+            <span id="answer-length">0</span> / 1000
+        </div>
+    </div>
+</body>
+</html>
