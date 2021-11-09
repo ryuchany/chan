@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본이벤트</title>
+    <script>
+        function notice(){
+            //목표 : 정말 이동할것인지 확인하는 창을 띄워 확인을 누를 때만 이동
+            //명령 : window.confirm() - 확인창 - 확인(true), 취소(false)를 반환
+            var choice = window.confirm("정말 이동하시겠습니까?");
+            // if(choice){
+            //     return true;
+            // }
+            // else{
+            //     return false;
+            // }
+            return choice;
+        }
+    </script>
+</head>
+<body>
+    <!--
+        기본 이벤트가 설정된 태그 : <a>, <form>
+        = 이 태그들은 기본적으로 설정된 동작이 존재한다.
+        = 이벤트를 추가하려면 반드시 기본 동작을 제한해야 한다.
+        = 이러한 태그들은 이벤트 설정 코드에 return false라고 적으면 기본동작을 하지 않는다.
+        = 내가 원하는 기능을 실행하고 기본 이벤트를 차단하려면 함수에서 반드시 true/false를 반환
+    -->
+    <a href="https://www.google.com" onclick="notice();">구글로 이동</a>
+    <hr>
+    <a href="https://www.google.com" onclick="return false;">구글로 이동</a>
+    <hr>
+    <a href="https://www.google.com" onclick="return true;">구글로 이동</a>
+    <hr>
+    <a href="https://www.google.com" onclick="return notice();">구글로 이동</a>
+</body>
+</html>
