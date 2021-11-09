@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<script type="text/javascript">
+
+
+	function testInnerHTML(arg0){
+
+        var t = arg0.value;
+
+
+document.getElementById("tt").innerHTML = t;
+
+
+}
+//-->
+
+</script>
+
+</head>
+
+<body>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+  <tr>
+
+	<td width="100%">
+
+	  <input type="button" name="btn" value="이건" onclick="javascript:testInnerHTML(this);">
+
+	  <div id="inHere"></div>
+
+	</td>
+
+  </tr>
+
+</table>
+
+</body>
+
+</html>
+
+
