@@ -1,0 +1,161 @@
+<!-- 회원 가입 화면을 만들고 규칙에 맞게 입력값을 검사하여 출력 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <style>
+        div {
+            border:1px dotted black;
+        }
+        .notice {
+            color:red;
+        }
+    </style>
+    <script>
+
+        function idCheck(){
+            var regex = /^[a-z][a-z0-9-_]{7,19}$/;
+            var input = document.querySelector("input[name=memberId]");
+            //var notice = document.querySelector("input[name=memberId] + .notice");
+            var notice = input.nextElementSibling;
+
+            if(regex.test(input.value)){
+                notice.textContent = "";
+            }
+            else{
+                notice.textContent = "아이디는 8~20자 영문+숫자로 작성하세요";
+            }
+        }
+
+        function pwCheck(){
+            var regex = /^[A-Za-z0-9!@#$\s_-]{8,16}$/;
+            var input = document.querySelector("input[name=memberPw]");
+            //var notice = document.querySelector("input[name=memberPw] + .notice");
+            var notice = input.nextElementSibling;
+
+            if(regex.test(input.value)){
+                notice.textContent = "";
+            }
+            else{
+                notice.textContent = "비밀번호는 8~16자 이내의 영문,숫자,특수문자로 작성하세요";
+            }
+        }
+        function pw2Check(){
+            //비밀번호 확인은 비밀번호 입력창 2개가 필요하다.
+            var pwInput = document.querySelector("input[name=memberPw]");
+            var pw2Input = document.querySelector("input[name=memberPw2]");
+            var notice = pw2Input.nextElementSibling;
+
+            //비밀번호 일치 = 입력창이 비어있지 않고 두 비밀번호 입력값이 같은 경우
+            if(pwInput.value.length > 0 && pwInput.value == pw2Input.value){
+                notice.textContent = "";
+            }
+            else{
+                notice.textContent = "비밀번호가 일치하지 않습니다";
+            }
+        }
+        function nicknameCheck(){
+            var regex = /^[가-힣0-9]{2,10}$/;
+            var input = document.querySelector("input[name=memberNick]");
+            //var notice = document.querySelector("input[name=memberNick] + .notice");
+            var notice = input.nextElementSibling;
+
+            if(regex.test(input.value)){
+                notice.textContent = "";
+            }
+            else{
+                notice.textContent = "닉네임은 한글, 숫자 2~10자로 작성하세요";
+            }
+        }
+        function birthCheck(){
+            //입력이 되어있는지만 확인
+            var input = document.querySelector("input[name=memberBirth]");
+            var notice = input.nextElementSibling;
+
+            if(input.value.length > 0){
+                notice.textContent = "";
+            }
+            else{
+                notice.textContent = "생년월일을 선택하세요";
+            }
+        }
+        function emailCheck(){
+            var regex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+            var input = document.querySelector("input[name=memberEmail]");
+            //var notice = document.querySelector("input[name=memberEmail] + .notice");
+            var notice = input.nextElementSibling;
+
+            if(input.value.length == 0 || regex.test(input.value)){
+                notice.textContent = "";
+            }
+            else{
+                notice.textContent = "이메일 형식이 올바르지 않습니다";
+            }
+        }
+        function phoneCheck(){
+            var regex = /^01[016789][1-9][0-9]{3}[0-9]{4}$/;
+            var input = document.querySelector("input[name=memberPhone]");
+            //var notice = document.querySelector("input[name=memberPhone] + .notice");
+            var notice = input.nextElementSibling;
+
+            if(input.value.length == 0 || regex.test(input.value)){
+                notice.textContent = "";
+            }
+            else{
+                notice.textContent = "전화번호는 - 없이 11자리로 작성하세요";
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="container-600 container-center">
+            <div class="row center">
+                <h1>회원 가입</h1>
+            </div>
+            <div class="row">
+                <label>아이디</label>
+                <input type="text" name="memberId" required class="form-input" onblur="idCheck();">
+                <div class="notice"></div>
+            </div>
+            <div class="row">
+                <label>비밀번호</label>
+                <input type="password" name="memberPw" required class="form-input" onblur="pwCheck();">
+                <div class="notice"></div>
+            </div>
+            <div class="row">
+                <label>비밀번호 확인</label>
+                <input type="password" name="memberPw2" required class="form-input" onblur="pw2Check();">
+                <div class="notice"></div>
+            </div>
+            <div class="row">
+                <label>닉네임</label>
+                <input type="text" name="memberNick" required class="form-input" onblur="nicknameCheck();">
+                <div class="notice"></div>
+            </div>
+            <div class="row">
+                <label>생년월일</label>
+                <input type="date" name="memberBirth" required class="form-input" onblur="birthCheck();">
+                <div class="notice"></div>
+            </div>
+            <div class="row">
+                <label>이메일</label>
+                <input type="email" name="memberEmail" class="form-input" onblur="emailCheck();">
+                <div class="notice"></div>
+            </div>
+            <div class="row">
+                <label>전화번호</label>
+                <input type="tel" name="memberPhone" class="form-input" onblur="phoneCheck();">
+                <div class="notice"></div>
+            </div>
+            <div class="row">
+                <input type="submit" value="회원가입" class="form-btn">
+            </div>
+        </div>        
+    </form>
+</body>
+</html>
