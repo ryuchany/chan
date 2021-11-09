@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 내장 객체</title>
+    <script>
+        /*
+            모든 언어에는 각자의 내장 객체가 존재하며, 주로 자주 사용하는 기능들을 처리하는 역할 수행
+            자바스크립트는 브라우저에 종속된 언어이기 때문에 브라우저를 제어하는 기능들이 필요하다.
+            - window : 브라우저 창을 의미하는 최상위 객체(window라는 단어를 쓰지 않아도 된다)
+        */
+        function windowTest1(){
+            //console.log(window);
+            window.alert("알림창 테스트");
+        }
+        function windowTest2(){
+            var choice = window.confirm("확인창 테스트");
+            console.log(choice);
+        }
+        function windowTest3(){
+            window.open("https://www.google.com");
+        }
+        function windowTest4(){
+            window.open("https://www.google.com", "popup", "width=500 , height=500");
+        }
+        function windowTest5(){
+            //지연 실행 : window.setTimeout(함수, 지연시간) - 지연시간 후 함수 실행
+            window.setTimeout(function(){
+                    window.alert("안녕!");
+            }, 5000);
+        }
+
+        function locationTest1(){
+            //console.log(window.location);
+            //console.log(location);
+
+            location.href = "https://www.google.com";
+        }
+        function locationTest2(){
+            location.reload();
+        }
+        function historyTest1(){
+                //history.go(1);
+                history.forward();
+        }
+        function historyTest2(){
+                //history.go(-1);
+                history.back();
+        }
+        function documentTest1(){
+            //태그를 선택하는 다양한 방법 (이름, 아이디, 클래스)
+            //구버전 : 명령이 전부 다 다르다. 모든 브라우저에서 작동한다.
+            //var tag = document.getElementById("hello");
+            //var tag = document.getElementsByTagName("h1")[0];
+            //var tag = document.getElementsByClassName("test")[0];
+
+            //신버전 : css 선택자 사용 및 명령 통합. 일부 구버전 브라우저에서 작동하지 않는다.
+            //var tag = document.querySelector("#hello");
+            //var tag = document.querySelector("h1");
+            var tag = document.querySelector(".test");
+
+            tag.style.color = "red";
+
+            //var tag2 = document.querySelector(".test2");
+            //tag2.style.color = "blue";
+
+            //신버전 : 모두 다 불러오는 명령(배열 결과)
+            var list = document.querySelectorAll(".test2");
+            console.log(list);
+
+            for(var i=0; i < list.length; i++){
+                list[i].style.color = "blue";
+            }
+       }
+    </script>
+</head>
+<body>
+    <button onclick="windowTest1();">알림창</button>
+    <button onclick="windowTest2();">확인창</button>
+    <button onclick="windowTest3();">새 탭</button>
+    <button onclick="windowTest4();">새 창</button>
+    <button onclick="windowTest5();">타임아웃</button>
+    <hr>
+    <button onclick="locationTest1();">페이지이동</button>
+    <button onclick="locationTest2();">새로고침</button>
+    <hr>
+    <button onclick="historyTest1();">앞으로가기</button>
+    <button onclick="historyTest2();">뒤로가기</button>
+    <hr>
+    <button onclick="documentTest1();">태그 선택</button>
+    <h1 id="hello" class="test">Hello Javascript</h1>
+
+    <h2 class="test2">다중 선택 샘플</h2>
+    <h2 class="test2">다중 선택 샘플</h2>
+    <h2 class="test2">다중 선택 샘플</h2>
+    <h2 class="test2">다중 선택 샘플</h2>
+    <h2 class="test2">다중 선택 샘플</h2>
+</body>
+</html>
