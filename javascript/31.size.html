@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9번 문제 독립형으로 변경</title>
+    <script>
+        window.addEventListener("load", function(){
+            //작게 버튼에 대한 이벤트 처리
+            document.querySelector("#btn-small").addEventListener("click", function(){
+                //this == #btn-small 버튼
+                var image = document.querySelector("#sample");
+                image.width = 100;
+                image.height = 100;
+            });
+
+            //보통 버튼에 대한 이벤트 처리
+            document.querySelector("#btn-normal").addEventListener("click", function(){
+                //this == #btn-normal 버튼
+                var image = document.querySelector("#sample");
+                image.width = 200;
+                image.height = 200;
+            });
+
+            //크게 버튼에 대한 이벤트 처리
+            document.querySelector("#btn-large").addEventListener("click", function(){
+                //this == #btn-large 버튼
+                var image = document.querySelector("#sample");
+                image.width = 300;
+                image.height = 300;
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="btn-small">작게</button>
+    <button id="btn-normal">보통</button>
+    <button id="btn-large">크게</button>
+    <hr>
+    <img src="./image/lion.gif" width="200" height="200" id="sample">
+</body>
+</html>

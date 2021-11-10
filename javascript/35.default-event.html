@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>독립형 모듈에서의 기본 이벤트 처리</title>
+    <script>
+        window.addEventListener("load", function(){
+            //.confirm-link에 대하여 확인창을 거쳐 이동하도록 이벤트 처리
+            //(주의)
+            //자바스크립트에서 이벤트를 설정하게 되면 기본 이벤트 방지 코드가 달라진다.
+            //return true 또는 return false로는 기본 이벤트 적용 여부를 결정할 수 없다.
+            //코드 함수에 이벤트 객체를 선언하여 정보를 받아서 "중지 명령"을 사용해야 한다.
+            //e.preventDefault();//기본 이벤트 중지(차단) 명령
+            document.querySelector(".confirm-link").addEventListener("click", function(e){
+                //console.log(arguments);
+
+                var choice = confirm("정말 이동하시겠습니까?");
+                //if(choice == false){
+                if(!choice){
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <a href="https://www.google.com">구글로 이동</a>
+    <hr>
+    <a href="https://www.google.com" class="confirm-link">구글로 이동</a>
+    <hr>
+    <a href="https://www.naver.com" class="confirm-link">네이버로 이동</a>
+</body>
+</html>

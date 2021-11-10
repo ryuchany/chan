@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //선택자를 전달받아서 해당 태그를 미리 선택해두고 
+        //대상에 대한 각종 기능(ex:스타일, 클래스, value 등)을 사용할 수 있는 객체를 생성
+        function khQuery(selector){
+
+            //제어 대상을 선택해야 한다.
+            var list = document.querySelectorAll(selector);
+
+            //선택한 대상에 대해 처리할 수 있는 기능들만 일회용 객체에 담아서 반환
+            return {
+                css:function(key, value){
+                    for(var i=0; i < list.length; i++){
+                        list[i].style[key] = value;
+                    }
+                    //다음 작업이 이어질 수도 있다고 가정하여 연속 작업이 가능하도록 자기자신을 반환
+                    return this;
+                },
+            };
+        }
+
+        //khQuery라는 이름조차도 길어서 쓸 힘이 없다.
+        //= 더 짧은 이름으로 교체
+        //= 특수 문자 중에서 사용 가능한 글자($, _) 를 써서 이름을 최소화
+        //= 일반 변수로 만드는 것이 아니라 최상위 객체인 window에 탑재
+        window.$ = khQuery;
+        console.log(window);
+
+        window.addEventListener("load", function(){
+            $("h1").css("color", "red")
+                        .css("backgroundColor", "yellow")
+                        .css("border", "1px solid black")
+                        .css("fontWeight", "bold")
+                        .css("textDecoration", "underline")
+                        .css("fontStyle", "italic");
+        });
+    </script>
+</head>
+<body>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+</body>
+</html>

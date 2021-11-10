@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열(Array)</title>
+    <script>
+        /*
+            자바스크립트에도 배열이 존재한다.
+            = 자바의 배열과 다르며, 자바 배열 + 자바 List 형태이다.
+            = 크기가 가변적이다.
+            = 각종 명령들이 제공된다.
+        */
+
+        //배열 생성
+        var a = [1, 2, 3, 4, 5];        //int[] a = new int[]{1, 2, 3, 4, 5};
+        var b = new Array(10);     //int[] b = new int[10];
+
+        a[5] = 10;//자바에서는 불가능한 코드이지만 자바스크립트에서는 가능하다.
+
+        console.log(a);
+        console.log(a.length);
+        console.log(b);
+        console.log(b.length);
+
+        //배열 출력
+        for(var i=0; i < a.length; i++){
+            console.log("-> " + a[i]);
+        }
+        for(var i=0; i < b.length; i++){
+            console.log("--> " + b[i]);
+        }
+
+        //주요 명령
+        var c = [];
+
+        //데이터를 마지막에 추가하는 명령
+        c.push(10);
+        c.push(20);
+        c.push(30);
+        c.push("hello");
+        c.push(1.5);
+
+        console.log(c);
+
+        //(주의) Javascript에서는 확장반복문이 자바와 다르다(다른 형태로 있다)
+        for(var i in c){
+            //console.log(i);
+            console.log(c[i]);
+        }
+
+        //구버전 브라우저에서 돌아가지 않는다.(특히 IE)
+        c.forEach(function(element){
+            console.log(element);
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

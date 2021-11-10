@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전체 선택</title>
+    <style>
+        label {
+            display: block;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function(){
+            //응용 : 전체선택이 여러 개인 경우
+            var checkAllList = document.querySelectorAll(".check-all");
+            for(var i=0; i < checkAllList.length; i++){
+                checkAllList[i].addEventListener("input", function(){
+                    //this == 체크된 .check-all
+                    var checkboxList = document.querySelectorAll("input[type=checkbox]");
+                    for(var k=0; k < checkboxList.length; k++){
+                        checkboxList[k].checked = this.checked;
+                    }
+                });
+            }
+
+            //추가 : 각자의 체크박스에 체크가 발생할 경우 전체선택 여부를 검사하여 전체선택 체크박스에 적용
+            var checkboxList = document.querySelectorAll("input[type=checkbox]:not(.check-all)");
+            for(var i=0; i < checkboxList.length; i++){
+                checkboxList[i].addEventListener("input", function(){
+                    //this == 체크된 하위 체크박스
+                    var count = 0;
+                    for(var k=0; k < checkboxList.length; k++){
+                        if(checkboxList[k].checked){
+                            count++;
+                        }
+                    }
+
+                    for(var k=0; k < checkAllList.length; k++){
+                        checkAllList[k].checked = (count == checkboxList.length);
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <label>
+        <input type="checkbox" class="check-all"> 
+        <span>전체 선택</span>
+    </label>
+    <hr>
+    <label><input type="checkbox"><span>딸기</span></label>
+    <label><input type="checkbox"><span>포도</span></label>
+    <label><input type="checkbox"><span>람부탄</span></label>
+    <label><input type="checkbox"><span>홍시</span></label>
+    <label><input type="checkbox"><span>두리안</span></label>
+    <label><input type="checkbox"><span>오렌지</span></label>
+    <label><input type="checkbox"><span>망고</span></label>
+    <label><input type="checkbox"><span>파인애플</span></label>
+    <label><input type="checkbox"><span>용과</span></label>
+    <label><input type="checkbox"><span>샤인머스켓</span></label>
+    <label><input type="checkbox"><span>스타후르츠</span></label>
+    <hr>
+    <label>
+        <input type="checkbox" class="check-all"> 
+        <span>전체 선택</span>
+    </label>
+    <label>
+        <input type="checkbox" class="check-all"> 
+        <span>전체 선택</span>
+    </label>
+    <label>
+        <input type="checkbox" class="check-all"> 
+        <span>전체 선택</span>
+    </label>
+    <label>
+        <input type="checkbox" class="check-all"> 
+        <span>전체 선택</span>
+    </label>
+    <label>
+        <input type="checkbox" class="check-all"> 
+        <span>전체 선택</span>
+    </label>
+</body>
+</html>
