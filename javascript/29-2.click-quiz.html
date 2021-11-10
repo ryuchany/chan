@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>독립형 클릭이벤트 문제</title>
+    <script>
+        window.addEventListener("load", function(){
+            var h1 = document.querySelector("h1");
+            //이벤트를 설정할 경우 처리코드에는 this라는 키워드 사용이 가능하다.
+            //= this는 "주인공"의 의미를 가진다.
+            h1.addEventListener("click", function(){
+                //this == h1
+                this.style.color = "red";
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Hello Javascript!</h1>    
+</body>
+</html>

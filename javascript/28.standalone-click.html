@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>독립형 자바스크립트 클릭 처리</title>
+    <script>
+        //아래 코드 덕에 화면이 모두 로딩된 다음에 자바스크립트를 실행할 수 있게 된다.
+        window.addEventListener("load", function(){
+            //여기에 작성한 코드는 HTML이 모두 로딩된 다음에 실행이 된다.
+            var button  = document.querySelector("button");
+            //button을 클릭하면 "잘했어" 라는 알림창이 출력되도록 연결 설정
+            button.addEventListener("click", function(){
+            window.alert("잘했어!");
+            });
+         });
+    </script>
+</head>
+<body>
+    <button>누르세요!</button>
+</body>
+</html>
