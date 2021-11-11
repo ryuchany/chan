@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 기본 형식</title>
+
+    <!-- jquery cdn 또는 보유한 파일을 불러오는 코드를 작성 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            //주의 : input은 약식명령이 없다(jquery가 만들어진 뒤에 나옴)
+            $("#sample-input").on("input", function(){
+                //VanillaJS
+                //console.log(this.value);
+                //document.querySelector("#result1").value = this.value;
+                //document.querySelector("#result2").textContent = this.value;
+                //document.querySelector("#result3").innerHTML = this.value;
+
+                //jQuery
+                //console.log($(this).val());
+                $("#result1").val($(this).val());//value
+                $("#result2").text($(this).val());//textContent
+                $("#result3").html($(this).val());//innerHTML
+            });
+            //$("#sample-input").input(function(){});//error
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="sample-input">
+    <hr>
+    <input type="text" id="result1">
+    <hr>
+    <div id="result2"></div>
+    <hr>
+    <div id="result3"></div>
+</body>
+</html>

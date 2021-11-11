@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class 제어</title>
+
+    <style>
+        .sample-class {
+            box-shadow: 0px 0px 10px 10px yellow;
+        }
+    </style>
+
+    <!-- jquery cdn 또는 보유한 파일을 불러오는 코드를 작성 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $("#add-btn").click(function(){
+                $("#sample-image").addClass("sample-class");
+            });
+            $("#remove-btn").click(function(){
+                $("#sample-image").removeClass("sample-class");
+            });
+            $("#toggle-btn").click(function(){
+                /*
+                if($("#sample-image").hasClass("sample-class")){
+                    $("#sample-image").removeClass("sample-class");
+                }
+                else{
+                    $("#sample-image").addClass("sample-class");
+                }
+                */
+               $("#sample-image").toggleClass("sample-class");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="add-btn">추가</button>
+    <button id="remove-btn">제거</button>
+    <button id="toggle-btn">토글</button>
+    <hr>
+    <img src="./image/lion.gif" width="200" height="200" id="sample-image">
+</body>
+</html>

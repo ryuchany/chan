@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기소개서</title>
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <style>
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $("#answer").on("input", function(){
+                //입력값을 answer라는 변수에 저장
+                var answer = $(this).val();
+
+                var len = answer.length;
+
+                //만약 1000글자가 넘어간다면 넘어간 만큼 글자를 제거
+                while(len > 1000){
+                    //textarea.value = textarea.value.substring(0, textarea.value.length-1);
+                    $(this).val($(this).val().substring(0, $(this).val().length - 1));
+                    len--;
+                }
+
+                $("#answer-length").text(len);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container-700 container-center">
+        <div class="row center">
+            <h1>자기소개서</h1>
+        </div>
+        <div class="row">
+            <h2>(Q) 본인 성격의 장/단점을 기술하세요.</h2>
+        </div>
+        <div class="row">
+            <textarea id="answer" rows="10" class="form-input"></textarea>
+        </div>
+        <div class="row right">
+            <span id="answer-length">0</span> / 1000
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 초기 구문</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        //VanillaJs 코드
+        //window.addEventListener("load", function(){});
+
+        //jQuery 코드 : 항상 무엇인가를 선택하면서 시작
+        //= jQuery는 VanillaJS와는 다르게 "추가 준비 작업"이 필요
+        //= jQuery는 window의 load 시점에 준비가 완료되지 않는다
+        //= JQuery는 document의 ready라는 새로운 시점을 만들어서 이 지점을 준비 완료지점으로 간주
+        // jQuery(window).on("load", function(){});//window에 load 이벤트를 설정하는 코드
+        //jQuery(document).on("ready", function(){});//jQuery가 권장하는 실행 시점(문서 ready 상태)
+        //jQuery(document).ready(function(){});//이벤트를 문자열로 설정하는 부분을 다른 명령으로 대체
+        //jQuery().ready(function(){});//아무것도 선택시지키 않으면 자동으로 document가 선택
+        //jQuery(function(){});//함수만 집어넣으면 자동으로 ready 이벤트에 대한 처리를 수행한다.
+        
+        //jQuery도 쓰기 귀찮으니까 $라는 별칭으로 대체한다(최종형태)
+        //= 주의 : 최근에는 $를 사용하는 라이브러리/프레임워크들이 많기 때문에 충돌이 발생할 경우 해결해야한다.
+        $(function(){
+            $("h1").css("color","red").css("background-color","yellow");
+        });
+            
+
+    </script>
+</head>
+<body>
+    <h1>Hello jQuery</h1>
+    <h1>Hello jQuery</h1>
+    <h1>Hello jQuery</h1>
+    <h1>Hello jQuery</h1>
+    <h1>Hello jQuery</h1>
+</body>
+</html>

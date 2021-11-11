@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>each 퀴즈</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            //.check-item에 입력이 발생하면 선택된 항목을 계산
+            //[1] 체크된 항목의 체크여부를 가려 추가 또는 삭제 후 출력
+            //[2] 전체 체크항목을 계산하여 출력
+
+            var selectedItem = [];
+
+            $(".check-item").on("input", function(){
+                //this == 이벤트가 발생한 체크박스(.check-item)
+                var name = $(this).next().text();
+
+                var index = selectedItem.indexOf(name);
+                if(index >= 0){
+                    selectedItem.splice(index, 1);
+                }
+                else{
+                    selectedItem.push(name);
+                }
+                //console.log(selectedItem);
+
+                $(".result > span").text(selectedItem);
+            });
+        });
+    </script>
+</head>
+<body>
+    <label><input type="checkbox" class="check-item"><span>딸기</span></label>
+    <label><input type="checkbox" class="check-item"><span>포도</span></label>
+    <label><input type="checkbox" class="check-item"><span>사과</span></label>
+    <label><input type="checkbox" class="check-item"><span>귤</span></label>
+    <label><input type="checkbox" class="check-item"><span>바나나</span></label>
+    <label><input type="checkbox" class="check-item"><span>파인애플</span></label>
+    <hr>
+    <div class="result">선택된 항목 : <span></span></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 문제</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            //클래스를 사용하여 선택할 수 있다.
+            $(".color-red").click(function(){
+                $("#target").css("color", "red");
+            });
+            $(".color-blue").click(function(){
+                $("#target").css("color", "blue");
+            });
+            $(".bgcolor-yellow").click(function(){
+                $("#target").css("background-color", "yellow");
+            });
+            $(".border-black").click(function(){
+                console.log("현재 border : " + $("#target").css("border"));
+
+                //$("#target").css("border", "1px solid black");
+                $("#target").css("border-color", "black")
+                                    .css("border-width", "1px")
+                                    .css("border-style", "solid");
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1 id="target">스타일 바꾸기</h1>
+    <button class="color-red">글자 빨강</button>
+    <button class="color-blue">글자 파랑</button>
+    <button class="bgcolor-yellow">배경 노랑</button>
+    <button class="border-black">테두리 검정</button>
+</body>
+</html>
