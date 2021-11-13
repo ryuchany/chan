@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문조사 폼</title>
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $(".create-btn").click(function(e){
+                e.preventDefault();
+
+                //.survey-contents에 추가한다(append)
+                var template = $("#survey-content-template").html();
+                $(".survey-contents").append(template);
+
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <!-- 견본 태그 : 화면에 표시하지 않으면서 모양만 저장할 수 있는 <template> 태그 -->
+    <template id="survey-content-template">
+        <div class="row">
+            <input type="text" name="surveyContent" placeholder="설문 항목 작성" required class="form-input">
+        </div>
+    </template>
+
+    <form action="http://localhost:8080/web09/multi.txt" method="get">
+        <div class="container-500 container-center">
+            <div class="row center">
+                <h1>설문 조사 생성</h1>
+            </div>
+            <div class="row">
+                <input type="text" name="surveyTitle" placeholder="설문 제목" required
+                                                        class="form-input">
+            </div>
+            <hr>
+            <div class="row right">
+                <button class="create-btn form-btn form-inline">항목 생성</button>
+            </div>
+            <hr>
+
+            <!-- append를 수행할 수 있는 영역 생성 -->
+            <div class="survey-contents">
+
+            </div>
+
+            <hr>
+            <div class="row">
+                <input type="submit" value="설문 등록" class="form-btn">
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>

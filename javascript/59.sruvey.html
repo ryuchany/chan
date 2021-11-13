@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설문조사 폼</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $(".create-btn").click(function(){
+                //input 태그를 생성한다.
+                var input = $("<input>");
+
+                //.survey-contents에 추가한다(append)
+                $(".survey-contents").append(input);
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" placeholder="설문 제목">
+    <hr>
+    <button class="create-btn">항목 생성</button>
+    <!-- append를 수행할 수 있는 영역 생성 -->
+    <div class="survey-contents"></div>
+</body>
+</html>

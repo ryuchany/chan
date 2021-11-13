@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Kakao 지도 시작하기</title>
+
+	<style>
+		#map {
+			width:500px;
+			height:400px;
+		}
+	</style>
+
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4859ed619a66bc2257cd46c346a815cc"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script>
+		$(function(){
+			//지도 생성 준비 코드
+			var container = document.querySelector("#map");
+			var options = {
+				center: new kakao.maps.LatLng(33.450701, 126.570667),
+				level: 3
+			};
+
+			//지도 생성 코드
+			var map = new kakao.maps.Map(container, options);
+
+			//버튼을 누르면 해당 지역으로 이동하도록 처리
+			$(".btn-seoul").click(function(){
+				var location = new kakao.maps.LatLng(37.566668, 126.977629);
+				map.setCenter(location);
+				//map.panTo(location);
+			});
+			$(".btn-incheon").click(function(){
+				var location = new kakao.maps.LatLng(37.456906, 126.705958);
+				map.setCenter(location);
+			});
+			$(".btn-busan").click(function(){
+				var location = new kakao.maps.LatLng(35.180716, 129.074935);
+				map.setCenter(location);
+			});
+		});
+	</script>
+</head>
+<body>
+	<button class="btn-seoul">서울</button>
+	<button class="btn-busan">부산</button>
+	<button class="btn-incheon">인천</button>
+	<div id="map"></div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Kakao 지도 시작하기</title>
+
+	<style>
+		#map {
+			width:500px;
+			height:400px;
+		}
+	</style>
+
+	<!-- 장소 정보 변환을 사용하려면 &libraries=services 가 src에 추가되어야 한다 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4859ed619a66bc2257cd46c346a815cc&libraries=services,drawing"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script>
+		$(function(){
+			//지도 생성 준비 코드
+			var container = document.querySelector("#map");
+			var options = {
+				center: new kakao.maps.LatLng(33.450701, 126.570667),
+				level: 3
+			};
+
+			//지도 생성 코드
+			var map = new kakao.maps.Map(container, options);
+
+			var geocoder = new kakao.maps.services.Geocoder();
+			var linePath = [];
+
+			//주소 -> 좌표
+			$(".convert").click(function(){
+				$("input[name=address]").each(function(){
+					var address = $(this).val();
+					addressToLocation(address);
+				});
+				//console.log(linePath);
+
+				// 지도에 표시할 선을 생성합니다
+				var polyline = new kakao.maps.Polyline({
+					path: linePath, // 선을 구성하는 좌표배열 입니다
+					strokeWeight: 5, // 선의 두께 입니다
+					strokeColor: '#FFAE00', // 선의 색깔입니다
+					strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+					strokeStyle: 'solid' // 선의 스타일입니다
+				});
+
+				// 지도에 선을 표시합니다 
+				polyline.setMap(map);  
+			});
+
+			//주소 -> 위도경도 변환 함수
+			function addressToLocation(address){
+				// 주소로 좌표를 검색합니다
+				geocoder.addressSearch(address, function(result, status) {
+					// 정상적으로 검색이 완료됐으면 
+					if (status === kakao.maps.services.Status.OK) {
+						var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+						linePath.push(coords);
+						map.setCenter(coords);
+					} 
+				});    
+			}
+		});
+	</script>
+</head>
+<body>
+	<div id="map"></div>
+	<hr>
+	주소 : <br>
+	<input type="text" name="address" value="서울특별시 강남구 테헤란로14길 6 남도빌딩"><br>
+	<input type="text" name="address" value="서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩"><br>
+	<input type="text" name="address" value="서울특별시 강남구 테헤란로 130 호산빌딩"><br>
+	<input type="text" name="address" value="서울특별시 중구 남대문로 120 대일빌딩"><br>
+	<input type="text" name="address" value="서울특별시 영등포구 선유동2로 57 이레빌딩"><br>
+	<button class="convert">변환</button>
+
+</body>
+</html>

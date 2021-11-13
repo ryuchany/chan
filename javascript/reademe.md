@@ -42,4 +42,9 @@
     - `.addClass(이름)` - 클래스 추가
     - `.hasClass(이름)` - 클래스 검사
     - `.removeClass(이름)` - 클래스 제거
+    - `.toggleClass(이름)` - 클래스 토글
+- visibility
+    - `show()` , `slideDown()` , `fadeIn()` - 표시 명령
+    - `hide()` , `slideUp()` , `fadeOut()` - 숨김 명령
+    - `toggle()` , `slideToggle()` , `fadeToggle()` - 토글 명령
 	

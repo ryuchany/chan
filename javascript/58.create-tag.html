@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태그 생성 및 삭제</title>
+
+    <!-- jquery cdn 또는 보유한 파일을 불러오는 코드를 작성 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            //생성 버튼을 누르면 h1태그를 만들고 Hello jQuery! 를 작성한 뒤 .target에 추가
+            $(".create-btn").click(function(){
+                //var h1 = document.createElement("h1");//VanillaJS
+                var h1 = $("<h1>").text("Hello jQuery!");
+                $(".target").append(h1);//.target에 h1을 append(안쪽 뒤에 추가) 하라!
+                //$(".target").prepend(h1);//.target에 h1을 prepend(안쪽 앞에 추가) 하라!
+                //$(".target").after(h1);//.target에 h1을 after(바깥쪽 뒤에 추가) 하라!
+                //$(".target").before(h1);//.target에 h1을 before(바깥쪽 앞에 추가) 하라!
+            });
+        });
+    </script>
+</head>
+<body>
+    <button class="create-btn">생성</button>
+    <hr>
+    <div class="target"></div>
+</body>
+</html>
