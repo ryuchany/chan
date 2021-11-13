@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력값 제어</title>
+    <script>
+        /*
+            목표 : 덧셈 계산기 만들기
+
+            - 계산 시점 : = 버튼을 눌렀을 때(onclick)
+            - 계산 내용 : #a의 입력값과 #b의 입력값을 더하여 #c에 출력
+        */
+        function plus(){
+            // 준비 : #a, #b, #c의 참조 변수(레퍼런스)
+            var a = document.querySelector("#a");//document.getElementById("a");
+            var b = document.querySelector("#b");//document.getElementById("b");
+            var c = document.querySelector("#c");//document.getElementById("c");
+            
+            //(Q) 입력값은 속성 이름이 무엇일까요?
+            //(A) input, select, textarea 이 세 개의 입력창에는 value라는 속성이 존재하며 입력값을 저장
+            //console.log(typeof a.value);
+            //c.value = a.value + b.value;
+            if(a.value == "" || b.value == ""){//<---> a.value != "" && b.value != ""
+                return;
+            }
+            c.value = parseInt(a.value) + parseInt(b.value);
+        }
+
+    </script>
+</head>
+<body>
+
+    <input type="number" id="a">
+    +
+    <input type="number" id="b">
+    <button onclick="plus()">=</button>
+    <input type="number" id="c">
+
+
+</body>
+</html>

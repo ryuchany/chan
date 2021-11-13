@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬라이드 메뉴</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        .menu-wrapper {
+            border:1px solid black;
+            display: inline-block;
+        }
+        .menu-wrapper > .menu-item {
+            display: none;
+        }
+        .menu-wrapper:hover > .menu-item {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-wrapper">
+        <a class="menu">메뉴1</a>
+        <a class="menu-item">항목1</a>
+        <a class="menu-item">항목2</a>
+        <a class="menu-item">항목3</a>
+        <a class="menu-item">항목4</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /*
+            라벨에는 입력창 참조 설정이 가능하다.
+            = 체크박스를 라벨로 참조하도록 구현한 뒤 체크박스를 숨겨버리면?
+            = display:none; 으로 설정
+        */
+        .chk {
+            display: none;
+        }
+
+        /* 체크된 체크박스의 라벨은 파란색으로, 체크되지 않은 체크박스의 라벨은 빨간색으로 표시 */
+        .chk + label {
+            color:red;
+        }
+        .chk:checked + label {
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" class="chk" id="ck-1">
+    <label for="ck-1">1번 약관에 동의합니다</label>
+
+    <hr>
+
+    <input type="checkbox" class="chk" id="ck-2">
+    <label for="ck-2">2번 약관에 동의합니다</label>
+
+    <hr>
+
+    <input type="checkbox" class="chk" id="ck-3">
+    <label for="ck-3">3번 약관에 동의합니다</label>
+</body>
+</html>

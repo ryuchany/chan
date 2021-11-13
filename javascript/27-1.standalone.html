@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>독립형(standalong) 스크립트 구성법</title>
+    <script>
+        //첫 번째 아이디어 : 지연 실행 명령(window.setTimeout)을 활용하여 시간 늦추기
+        //=> 페이지, 인터넷 상황, 컴퓨터 성능에 따라 로딩시간이 다 다르므로 맞추기 어렵다.
+        //=> 태그는 인식한다.
+        window.setTimeout(function(){
+            var h1 = document.querySelector(".title");
+            console.log(h1);
+            h1.style.color = "red";
+        }, 350);
+    </script>
+</head>
+<body>
+    <h1 class="title">Hello Javascript!</h1>
+</body>
+</html>

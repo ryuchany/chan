@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하이퍼링크 스타일링</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /*
+            하이퍼링크 스타일링
+            = 링크는 다양한 상태를 가지고 있다.
+            = a:link 는 link가 설정된 a태그를 의미
+            = a:visited 는 방문한 주소의 a태그를 의미
+            = a:hover 는 마우스가 올라간 a태그를 의미
+            = 이와 같이 특정 상태의 태그를 선택하는 선택자를 상태 선택자라고 한다
+            = a 태그는 inline 속성을 가지므로 폭을 설정할 수 없다.
+        */
+        a:link {
+            color:red;
+        }
+        a:visited {
+            color:gray;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.google.com">구글로 이동</a>
+    <a href="https://www.naver.com">네이버로 이동</a>
+    <a>주소 없는 링크</a>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fontRed(){
+        var ref = document.querySelector("#target");
+        
+        //ref.style="color:red;"//스타일 전체가 덮어쓰기됨(기존 스타일 제거)
+        ref.style.color ="red";//스타일 중 color만 덮어쓰기됨(기존 스타일 유지)
+    }
+
+    function fontBlue(){
+        var ref = document.querySelector("#target");
+        
+        //ref.style="color:blue;"
+        ref.style.color ="blue";
+    }
+
+    function backgroundYellow(){
+        var ref = document.querySelector("#target");
+        
+        //ref.style="background-color:yellow;"
+        ref.style.backgroundColor = "yellow";
+    }
+
+    function borderBlack(){
+        var ref = document.querySelector("#target");
+        
+        //ref.style="border: 1px solid black;"
+        ref.style.border = "1px solid black";
+    }
+    </script>
+</head>
+<body>
+    <button onclick="fontRed();">글자 빨강</button>
+    <button onclick="fontBlue();">글자 파랑</button>
+    <button onclick="backgroundYellow();">배경 노랑</button>
+    <button onclick="borderBlack();">테두리 검정</button>
+
+    <h1 id="target">스타일 바꾸기</h1>
+</body>
+</html>

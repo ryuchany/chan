@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 스타일링</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /*
+            이미지 스타일
+            - 공용 스타일 : .image
+            - 확장 스타일
+                .image-round : 둥근 이미지
+                .image-border : 테두리가 있는 이미지
+                .image-hover : 마우스가 올라가면 테두리가 생기는 이미지
+                .image-blur : 마우스가 올라가면 선명해지는 이미지
+                .image-shadow : 그림자가 생기는 이미지
+                .image-leaf : 나뭇잎 모양의 이미지
+        */
+        .image {
+            border:2px solid transparent;
+        }
+        .image.image-round {
+            border-radius: 50%;
+        }
+        .image.image-border ,
+        .image.image-hover:hover {
+            border:2px solid gray;
+        }
+        .image.image-blur {
+            /* 
+                opacity를 이용하여 불투명 정도를 0(0%) 부터 1(100%) 사이에서 설정 
+                background에 부여하는 alpha는 배경만 투명해지지만, opacity는 태그 전체가 투명(내용물 포함)
+            */
+            opacity: 0.4;
+        }
+        .image.image-blur:hover {
+            opacity: 1;
+        }
+        .image.image-shadow {
+            /*
+                box-shadow : x축위치 y축위치 번짐정도 확장크기 색상
+                box-shadow: 5px 5px 0px 0px black;
+            */
+            box-shadow: 0px 0px 10px 2px yellow;
+        }
+        .image.image-leaf {
+            border-top-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://via.placeholder.com/200x200" class="image image-round">
+    <img src="https://via.placeholder.com/200x200" class="image image-border">
+    <img src="https://via.placeholder.com/200x200" class="image image-round image-border">
+    <img src="https://via.placeholder.com/200x200" class="image image-hover">
+    <img src="https://via.placeholder.com/200x200" class="image image-blur">
+    <img src="https://via.placeholder.com/200x200" class="image image-shadow">
+    <img src="https://via.placeholder.com/200x200" class="image image-leaf">
+    <img src="https://via.placeholder.com/200x200" class="image">
+    <img src="https://via.placeholder.com/200x200" class="image">
+    <img src="https://via.placeholder.com/200x200" class="image">
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트의 실행 시점</title>
+    <!--
+        (Q) 
+        화면을 만들 때는 HTML + CSS + JS를 사용하여 만들어야 한다.
+        서로 다른 언어를 섞어서 만들 때 실행하는 순서는 어떻게 될까?
+        (ex) HTML먼저 or CSS먼저 or JS먼저 or 작성한순서대로 or ...
+        - IE / Edge / Chrome / Whale / Opera : 자바스크립트 실행 후 HTML 실행
+        - Firefox : 작성한 순서대로
+        결론 : 
+        = 브라우저마다 실행순서가 모두 다르다
+        = 페이지가 로딩되자마자 태그를 선택해서 무언가 처리를 하고 싶다면 실행시점을 맞춰야 한다.
+        = 화면이 모두 로딩된 다음 자바스크립트 코드가 실행되도록 "지연" 처리를 해야 한다.
+        = 화면이 모두 로딩된 경우 실행되는 이벤트 종류는 "load" 이벤트이다.
+    -->
+</head>
+<body>
+
+    <script>
+        window.alert("before");
+    </script>
+
+    <h1>HTML 코드</h1>
+
+    <script>
+        window.alert("after");
+    </script>
+
+</body>
+</html>

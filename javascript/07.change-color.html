@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자 색상 바꾸기</title>
+    <script>
+        function red(){
+            //h1 태그를 "선택"하여 디자인을 변경
+            var tag = document.querySelector("#target"); //최신 명령
+            //var tag = document.getElementById("target"); //모든 브라우저 작동 명령
+            console.log(tag);
+
+            //선택된 태그에 style이라는 속성값을 "color:red;"라고 설정하겠다!
+            tag.style="color:red;"
+        }
+    </script>
+</head>
+<body>
+    <button onclick="red();">빨강</button>
+    <h1 id="target">Hello Javascript</h1>
+</body>
+</html>

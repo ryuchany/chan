@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체크박스 제어</title>
+    <script>
+        function check(){
+            var ck = document.querySelector("#ck-box");
+            //ck.checked = "checked";
+            ck.checked = true;
+        }
+        function uncheck(){
+            var ck = document.querySelector("#ck-box");
+            //ck.checked = "";
+            ck.checked = false;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="check();">체크</button>
+    <button onclick="uncheck();">해제</button>
+    <hr>
+    <input type="checkbox" id="ck-box">
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+    <script>
+        //닉네임을 검사하는 함수
+        function nicknameCheck(){
+            //준비 : input[name=memberNick], input[name=memberNick] + span
+            var nicknameInput = document.querySelector("input[name=memberNick]");
+            //var nicknameSpan = document.querySelector("input[name=memberNick] + span");
+            var nicknameSpan = nicknameInput.nextElementSibling;
+
+            //String regex = "정규표현식";
+            var regex = /^[가-힣]{2,10}$/;
+            //boolean isCorrect = Pattern.matches(regex, nicknameInput.value);
+            var isCorrect = regex.test(nicknameInput.value);
+            if(isCorrect){
+                nicknameSpan.textContent = "올바른 닉네임 형식입니다";
+            }
+            else{
+                nicknameSpan.textContent = "닉네임은 한글 2~10자 이내로 작성하세요";
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="memberNick" oninput="nicknameCheck();">
+    <span></span>
+</body>
+</html>

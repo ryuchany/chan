@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내부 글자 제어</title>
+    <script>
+        //목표 : #user-input에 작성된 값을 각각 innerHTML, textContent 방식으로 출력
+        //정의 : 내부 글자라 함은 태그 사이에 작성된 내용을 의미한다. (ex) <div>내용</div>
+        //주의 : 단, textarea는 입력태그로 분류되므로 입력값을 value로 읽는다
+        function copyValue(){ // id 는 # 클래스는 .
+            var textarea = document.querySelector("#user-input");
+            var output1 = document.querySelector(".output1");
+            var output2 = document.querySelector(".output2");
+
+            //innerHTML은 HTML 요소를 해석해서 내용을 적용한다.
+            //textContent는 있는 그대로의 글자를 내용으로 적용한다.
+            output1.innerHTML = textarea.value;
+            output2.textContent = textarea.value;
+        }
+
+    </script>
+</head>
+<body>
+    <textarea id="user-input" oninput="copyValue();"></textarea>
+    <hr>
+    <div class="output1"></div>
+    <hr>
+    <div class="output2"></div>
+    
+</body>
+</html>

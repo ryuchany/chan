@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>색상 설정</title>
+    <style>
+        /*
+            RGB 방식
+            = Red, Green, Blue 후레시를 이용한 색상 생성 방식(빛의 3원색)
+            = 값이 클 수록 밝아진다
+            = 0(0x00)부터 255(0xFF)까지 설정이 가능하다
+            = 전부다 255면 흰색, 전부다 0이면 검은색
+            RGBA 방식
+            = A(Alpha)를 통해 투명도를 설정할 수 있다.
+            = 0(0%) 부터 1(100%) 까지 설정이 가능하다.
+            = hex string에서는 00(0%) 부터 FF(100%) 사이에서 설정한다.
+            HSL 방식
+            = Hue(색조), Saturation(채도), Lightness(명도)를 이용한 색상 방식
+            = 색상환에서 색상을 숫자로 (0~359) 범위에서 선택하여 사용(각도)
+            = 0은 360과 같다
+            = 채도와 명도는 0%부터 100%까지 설정한다.
+        */
+        .color-1 {
+            color:red;
+        }
+        .color-2 {
+            color:rgb(255, 0, 0);
+        }
+        .color-3 {
+            color:#FF0000;
+        }
+        .color-4 {
+            color:rgba(255, 0, 0, 0.5);
+        }
+        .color-5 {
+            color: #FF000080;
+        }
+        .color-6 {
+            /* 색상환 0deg의 색상(빨강) + 100%의 선명도 + 50%의 밝기 */
+            color:hsl(0, 100%, 50%);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="color-1">color-1</h1>
+    <h1 class="color-2">color-2</h1>
+    <h1 class="color-3">color-3</h1>
+    <h1 class="color-4">color-4</h1>
+    <h1 class="color-5">color-5</h1>
+    <h1 class="color-6">color-6</h1>
+</body>
+</html>

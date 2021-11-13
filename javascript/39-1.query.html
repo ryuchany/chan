@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //선택자와 값을 전달받아 "color"를 변경하는 함수
+        function color(selector, value){
+            var list = document.querySelectorAll(selector);
+            for(var i=0; i < list.length; i++){
+                list[i].style.color = value;
+            }
+        }
+
+        //선택자와 값을 전달받아 "background-color"를 변경하는 함수
+        function bgColor(selector, value){
+            var list = document.querySelectorAll(selector);
+            for(var i=0; i < list.length; i++){
+                list[i].style.backgroundColor = value;
+            }
+        }
+
+        //현재 코드의 특징
+        //= 개수를 신경쓰지 않고 일괄 처리할 수 있다.
+        //= 너무 많이 만들어야 한다.
+        //= 태그를 계속 선택한다(비효율적)
+        window.addEventListener("load", function(){
+            //color("h1", "red");
+            color("h1", "blue");
+            bgColor("h1", "yellow");
+        });
+    </script>
+</head>
+<body>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+</body>
+</html>

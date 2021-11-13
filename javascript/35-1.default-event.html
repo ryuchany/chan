@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>독립형 모듈에서의 기본 이벤트 처리</title>
+    <script>
+        window.addEventListener("load", function(){
+            //모든 .confirm-link를 클릭하면 확인창이 표시되도록 변경
+            var confirmLinkList = document.querySelectorAll("a.confirm-link");
+            for(var i=0; i < confirmLinkList.length; i++){
+                confirmLinkList[i].addEventListener("click", function(e){
+                    //this == 클릭한 .confirm-link
+                    var choice = confirm("정말 "+this.textContent+"하시겠습니까?");
+                    if(!choice){
+                        e.preventDefault();
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <a href="https://www.google.com">구글로 이동</a>
+    <hr>
+    <a href="https://www.google.com" class="confirm-link">구글로 이동</a>
+    <hr>
+    <a href="https://www.naver.com" class="confirm-link">네이버로 이동</a>
+    <hr>
+    <a href="https://www.instagram.com" class="confirm-link">인스타그램으로 이동</a>
+</body>
+</html>

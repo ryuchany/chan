@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 길이 계산</title>
+    <script>
+        //입력창의 글자수를 구하여 화면에 출력
+        //= 자바스크립트에서는 어떠한 경우에도 개수가 .length이다.
+
+        //(주의) 입력태그를 제외한 다른 태그에는 value가 없다.
+        //= innerHTML 또는 textContent라는 속성을 사용한다.
+        function lengthCheck(){
+            var input = document.querySelector(".example-input");
+            var output = document.querySelector(".example-output");
+            var output2 = document.querySelector(".example-output2");
+
+            //output.value = input.value;
+            output.value = input.value.length;
+            //output2.value = input.value.length;//output2는 span이므로 value 속성이 없다
+            output2.textContent = input.value.length;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" class="example-input" oninput="lengthCheck();">
+    <hr>
+    <input type="text" class="example-output">
+    <hr>
+    <span class="example-output2"></span>
+</body>
+</html>

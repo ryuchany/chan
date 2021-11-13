@@ -1,0 +1,17 @@
+# 자바스크립트로 제어할 수 있는 요소
+- 태그 선택 - `var tag = document.querySelector("선택자");`
+	- 입력값 - `tag.value`
+	- 속성 - `tag.id`, `tag.type` 등
+	- 내부 글자 - `tag.textContent`, `tag.innerHTML`
+	- 스타일 - `tag.style = "color:red;";`, `tag.style.color = "red";`
+	- 클래스
+        - `tag.className = "danger";`
+		- `tag.classList.add("danger");`
+		- `tag.classList.remove("danger");`
+		- `tag.classList.contains("danger");`
+- 이벤트	
+    - click - 클릭했을 때
+    - input - 입력이 발생했을 때
+    - blur - 입력창에서 벗어나려 할 때
+    - submit - 폼이 전송되려 할 때
+    - load - 페이지가 로딩되었을 때

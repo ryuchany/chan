@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스 제어</title>
+    <style>
+        .danger {
+            color:red;
+        }
+        .success {
+            color:#00b894;
+        }
+    </style>
+    <script>
+        //목표 : 버튼들을 누르면 해당하는 클래스를 추가
+        //클래스는 제어 명령이 다르다
+        //- className 속성 사용 : 기존의 클래스까지 모두 덮어쓰기
+        //      = class라는 속성 대신 className으로 직접 class="" 부분을 작성할 수 있다.
+        //- classList 속성 사용 
+        //      = 모든 태그 객체는 classList라는 클래스 저장소를 가진다.
+        //      = 명령이 다양해지며 기존 클래스와 충돌이 발생하지 않는다
+        function success(){
+            var h1 = document.querySelector(".title");
+            //h1.className = "success";//덮어쓰기
+            remove();
+            h1.classList.add("success");//추가
+        }
+        function danger(){
+            var h1 = document.querySelector(".title");
+            //h1.className = "danger";//덮어쓰기
+            remove();
+            h1.classList.add("danger");//추가
+        }
+        function remove(){
+            var h1 = document.querySelector(".title");
+            //h1.className = "";//전체 삭제
+            h1.classList.remove("success", "danger");//선택 삭제
+        }
+    </script>
+</head>
+<body>
+    <button onclick="success();">success</button>
+    <button onclick="danger();"">danger</button>
+    <button onclick="remove();">remove</button>
+    <h1 class="title">Javascript Class Control</h1>
+</body>
+</html>

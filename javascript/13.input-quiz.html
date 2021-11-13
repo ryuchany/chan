@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 결제</title>
+    <script>
+        function calculate(){
+            //준비 : #size, #qty, #total
+            var size = document.querySelector("#size");//document.getElementById("size");
+            var qty = document.querySelector("#qty");//document.getElementById("qty");
+            var total = document.querySelector("#total");//document.getElementById("total");
+
+            if(qty.value != ""){
+                total.value = parseInt(size.value) * parseInt(qty.value);
+            }
+            else{
+                total.value = 0;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>상품 구매</h1>
+    <img src="https://placeimg.com/360/360/any">
+    <hr>
+    사이즈 : 
+    <select id="size">
+        <option value="20000">M (20000)</option>
+        <option value="25000">L (25000)</option>
+        <option value="30000">XL (30000)</option>
+    </select>
+    <br>
+    수량 : <input type="number" id="qty" value="1">
+    <br>
+    <button onclick="calculate();">계산하기</button>
+    <br>
+    결제금액 : <input type="number" id="total">
+</body>
+</html>

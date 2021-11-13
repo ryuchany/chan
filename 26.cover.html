@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="commons.css">
+    <style>
+        /*
+            (Q) 
+            .screen-cover에 스타일을 부여하여 
+            화면을 뒤덮도록 하여 링크 선택이 불가하도록 구현
+        */
+        body {
+            width:5000px;
+            height:5000px;
+        }
+        .screen-cover {
+            background-color: rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="https://www.google.com">구글</a>
+    <a href="https://www.naver.com">네이버</a>
+
+    <div class="screen-cover"></div>
+</body>
+</html>

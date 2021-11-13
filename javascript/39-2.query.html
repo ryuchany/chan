@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //선택자를 전달받아서 해당 태그를 미리 선택해두고 
+        //대상에 대한 각종 기능(ex:스타일, 클래스, value 등)을 사용할 수 있는 객체를 생성
+        function khQuery(selector){
+
+            //제어 대상을 선택해야 한다.
+            var list = document.querySelectorAll(selector);
+
+            //선택한 대상에 대해 처리할 수 있는 기능들만 일회용 객체에 담아서 반환
+            return {
+                color:function(value){
+                    for(var i=0; i < list.length; i++){
+                        list[i].style.color = value;
+                    }
+                },
+                bgColor:function(value){
+                    for(var i=0; i < list.length; i++){
+                        list[i].style.backgroundColor = value;
+                    }
+                },
+                border:function(value){
+                    for(var i=0; i < list.length; i++){
+                        list[i].style.border = value;
+                    }
+                }
+            };
+        }
+
+        //현재 코드의 특징
+        //= 선택을 1번만 미리 해두고 원하는 작업을 수행하기 때문에 처리 횟수 감소
+        //= 작업 한 번당 명령을 1개씩 작성해야 한다.
+        window.addEventListener("load", function(){
+            //1. khQuery를 불러서 "선택자"를 전달한다(1단계)
+            var kh = khQuery("h1");
+            console.log(kh);
+
+            //2. 1단계에서 만든 객체의 기능을 사용한다(2단계)
+            kh.color("red");
+            kh.bgColor("yellow");
+            kh.border("1px solid black");
+        });
+    </script>
+</head>
+<body>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+    <h1>Hello KHQuery</h1>
+</body>
+</html>

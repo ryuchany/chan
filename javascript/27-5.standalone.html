@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>독립형(standalong) 스크립트 구성법</title>
+    <script>
+        //네 번째 아이디어
+        //= onload에 직접 함수를 설정하면 기존 함수들이 모두 제거된다(덮어쓰기).
+        //= 이벤트를 덮어쓰기하는 것이 아니라 추가할 수 있는 방식으로 변경
+        //= addEventListener() 명령 사용
+        //= window.addEventListener("이벤트종류" ,함수);
+        //= 기존 이벤트를 해치지 않고 추가로 설정할 수 있다.
+
+        window.addEventListener("load" , function(){
+        var h1 = document.querySelector(".title");
+         h1.style.color = "blue";
+        });
+
+    </script>
+</head>
+<body>
+    <h1 class="title">Hello Javascript!</h1>
+</body>
+</html>
