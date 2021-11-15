@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 이벤트 제어</title>
+
+    <!-- jquery cdn 또는 보유한 파일을 불러오는 코드를 작성 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        //.confirm-link를 클릭하면 확인창 띄운 뒤 이동하도록 처리
+        //1. jQuery에서는 return false를 이용한 기본 이벤트 방지가 가능
+        //2. jQuery에서는 이벤트 객체(e)를 이용한 방지 명령이 가능
+        $(function(){
+            $(".confirm-link").click(function(e){
+                e.preventDefault();
+            });
+        });
+    </script>
+</head>
+<body>
+        <a href="https://www.google.com" class="confirm-link">구글로 이동</a>
+</body>
+</html>

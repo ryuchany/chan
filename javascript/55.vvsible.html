@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표시 또는 숨김</title>
+
+    <!-- jquery cdn 또는 보유한 파일을 불러오는 코드를 작성 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $(".hide-btn").click(function(){
+                document.querySelector(".target").style.display = "none";
+            });
+            $("show-btn").click(function(){
+                document.querySelector(".target").style.display = "inline-block";
+            });
+        });
+    </script>
+</head>
+<body>
+    <button class="hide-btn">숨김</button>
+    <button class="show-btn">표시</button>
+    <button class="toggle-btn">토글</button>
+    <hr>
+    <img src="./image/loading.gif" width="200" height="200" class="target">
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Kakao 지도 시작하기</title>
+
+	<style>
+		#map {
+			width:500px;
+			height:400px;
+		}
+	</style>
+
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4859ed619a66bc2257cd46c346a815cc"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script>
+		$(function(){
+			//지도 생성 준비 코드
+			var container = document.querySelector("#map");
+			var options = {
+				center: new kakao.maps.LatLng(33.450701, 126.570667),
+				level: 3
+			};
+
+			//지도 생성 코드
+			var map = new kakao.maps.Map(container, options);
+
+			//첫 생성 시 필요하다면 확대/축소/이동 금지 처리
+			map.setDraggable(false);
+			map.setZoomable(false);
+
+			//버튼을 누르면 해당 지역으로 이동하도록 처리
+			$(".btn-move").click(function(){
+				//var lat = $(this).attr("data-lat");
+				var lat = $(this).data("lat");
+				//var lng = $(this).attr("data-lng");
+				var lng = $(this).data("lng");
+				var location = new kakao.maps.LatLng(lat, lng);
+				map.setCenter(location);
+
+				//마커 추가 코드(위치 : location)
+				var marker = new kakao.maps.Marker({
+					position:location
+				});
+				marker.setMap(map);
+			});
+
+			$(".btn-level-increase").click(function(){
+				map.setLevel(map.getLevel() + 1);
+			});
+			$(".btn-level-decrease").click(function(){
+				map.setLevel(map.getLevel() - 1);
+			});
+		}); 
+	</script>
+</head>
+<body>
+	<!-- 팁 : 태그에 정보를 보관해야 할 경우 data- 로 시작하는 속성을 만들어 저장할 것을 권장 -->
+	<button class="btn-move" data-lat="37.566668" data-lng="126.977629">서울</button>
+	<button class="btn-move" data-lat="35.180716" data-lng="129.074935">부산</button>
+	<button class="btn-move" data-lat="37.456906" data-lng="126.705958">인천</button>
+	<button class="btn-move" data-lat="36.351251" data-lng="127.384818">대전</button>
+	<button class="btn-level-increase">+</button>
+	<button class="btn-level-decrease">-</button>
+	<div id="map"></div>
+</body>
+</html>

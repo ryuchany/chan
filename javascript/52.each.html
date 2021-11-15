@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 반복문</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            //.total-btn을 클릭하면 합계를 구하여 화면에 출력
+            $(".total-btn").click(function(){
+
+                //var total = $(".number-input").eq(0).val() + $(".number-input").eq(1).val() + ...
+
+                //통합하여 처리할 수 없는 상황에 대한 jQuery의 해결책
+                //.each() 명령을 사용
+                //[1] $.each($(선택자), 코드); - 선택된 태그 수만큼 코드가 실행됨
+                //[2] $(선택자).each(코드); - 선택된 태그 수만큼 코드가 실행됨
+
+                var total = 0;
+
+                $(".number-input").each(function(index, element){
+                    //this == .number-input 중 현재 순서인 태그 == element
+                    //console.log($(this).val());
+                    //console.log(index + " , " + element);
+
+                    total += parseInt($(this).val());
+                });
+
+                //console.log(total);
+                $(".result > span").text(total);
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="number" class="number-input" value="0"><br><br>
+    <input type="number" class="number-input" value="0"><br><br>
+    <input type="number" class="number-input" value="0"><br><br>
+    <input type="number" class="number-input" value="0"><br><br>
+    <input type="number" class="number-input" value="0"><br><br>
+    <button class="total-btn">합계 구하기</button>
+    <hr>
+    <div class="result">
+        합계는 <span>0</span>입니다
+    </div>
+</body>
+</html>

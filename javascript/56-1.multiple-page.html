@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 기본 형식</title>
+    <link rel="stylesheet" type="text/css" href="./css/commons.css">
+
+    <!-- jquery cdn 또는 보유한 파일을 불러오는 코드를 작성 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            //[1] 1페이지 빼고 다 숨김
+            //= 다 숨기고 1페이지만 표시
+            $(".page").hide();
+            $(".page").eq(0).show();
+
+            //[2] 페이지 번호 관리 변수 생성
+            var p = 0;
+
+            //[3] 다음 단계로 버튼에 대한 이벤트 처리
+            //= p를 1 증가시키고 해당하는 페이지를 표시
+            //= form 안의 버튼은 submit 효과가 자동 부여되므로 이를 방지해야 한다.
+            $(".btn-next").click(function(e){
+                e.preventDefault();
+
+                p++;
+                $(".page").hide();
+                $(".page").eq(p).show();
+            });
+
+            //[4] 이전 단계로 버튼에 대한 이벤트 처리
+            $(".btn-prev").click(function(e){
+                e.preventDefault();
+
+                p--;
+                $(".page").hide();
+                $(".page").eq(p).show();
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <div class="page">
+            <div class="container-700 container-center">
+                <div class="row center">
+                    <h1>1단계 : 로그인 정보</h1>
+                </div>
+                <div class="row">
+                    <label>아이디</label>
+                    <input type="text" name="??" class="form-input">
+                </div>
+                <div class="row">
+                    <label>비밀번호</label>
+                    <input type="password" name="??" class="form-input">
+                </div>
+                <div class="row">
+                    <button class="btn btn-next form-btn">다음 단계로</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="page">
+            <div class="container-700 container-center">
+                <div class="row center">
+                    <h1>2단계 : 개인 정보</h1>
+                </div>
+                <div class="row">
+                    <label>이름</label>
+                    <input type="text" name="??" class="form-input">
+                </div>
+                <div class="row">
+                    <label>전화번호</label>
+                    <input type="text" name="??" class="form-input">
+                </div>
+                <div class="row">
+                    <label>이메일</label>
+                    <input type="text" name="??" class="form-input">
+                </div>
+                <div class="row">
+                    <button class="btn btn-next form-btn">다음 단계로</button>
+                </div>
+                <div class="row">
+                    <button class="btn btn-prev form-btn">이전 단계로</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="container-700 container-center">
+                <div class="row center">
+                    <h1>3단계 : 이용자 정보</h1>
+                </div>
+                <div class="row">
+                    <label>닉네임</label>
+                    <input type="text" name="??" class="form-input">
+                </div>
+                <div class="row">
+                    <label>프로필</label>
+                    <input type="file" name="??" class="form-input">
+                </div>
+                <div class="row">
+                    <button class="btn btn-prev form-btn">이전 단계로</button>
+                </div>
+                <div class="row">
+                    <button class="btn btn-submit form-btn">회원 가입하기</button>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</body>
+</html>

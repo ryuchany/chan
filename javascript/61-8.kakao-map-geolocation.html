@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Kakao 지도 시작하기</title>
+
+	<style>
+		#map {
+			width:500px;
+			height:400px;
+		}
+	</style>
+
+	<!-- 장소 정보 변환을 사용하려면 &libraries=services 가 src에 추가되어야 한다 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4859ed619a66bc2257cd46c346a815cc&libraries=services"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script>
+		$(function(){
+			//지도 생성 준비 코드
+			var container = document.querySelector("#map");
+			var options = {
+				center: new kakao.maps.LatLng(33.450701, 126.570667),
+				level: 3
+			};
+
+			//지도 생성 코드
+			var map = new kakao.maps.Map(container, options);
+
+			//주소 -> 좌표
+			$(".convert").click(function(){
+				//1. 변환할 주소를 준비
+				var address = $("input[name=address]").val();
+
+				//2. 카카오 장소변환 샘플 코드를 복사 후 일부 수정
+				// 주소-좌표 변환 객체를 생성합니다
+				var geocoder = new kakao.maps.services.Geocoder();
+
+				// 주소로 좌표를 검색합니다
+				geocoder.addressSearch(address, function(result, status) {
+
+					// 정상적으로 검색이 완료됐으면 
+					if (status === kakao.maps.services.Status.OK) {
+
+						//위도 == result[0].y
+						//경도 == result[0].x
+						var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+						$("input[name=latitude]").val(result[0].y);
+						$("input[name=longitude]").val(result[0].x);
+
+						// 결과값으로 받은 위치를 마커로 표시합니다
+						var marker = new kakao.maps.Marker({
+							map: map,
+							position: coords
+						});
+
+						// 인포윈도우로 장소에 대한 설명을 표시합니다
+						var infowindow = new kakao.maps.InfoWindow({
+							content: '<div style="width:150px;text-align:center;padding:6px 0;">'+address+'</div>'
+						});
+						infowindow.open(map, marker);
+
+						// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+						map.setCenter(coords);
+					} 
+				});    
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="map"></div>
+	<hr>
+	주소 : <input type="text" name="address">
+	<button class="convert">변환</button>
+	<hr>
+	위도 : <input type="text" name="latitude">
+	<br>
+	경도 : <input type="text" name="longitude">
+</body>
+</html>

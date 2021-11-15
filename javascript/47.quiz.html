@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            //document.querySelector("input[name=memberNick]").addEventListener("input", function(){});            
+            $("input[name=memberNick]").on("input", function(){
+                var regex = /^[가-힣]{2,10}$/;
+                var nickname = $(this).val();
+
+                //JS의 .nextElementSibling 은 jQuery의 .next()와 같다.(CSS에서 +와 같다)
+                //JS의 .previousElementSibling 은 jQuery의 .prev()와 같다.(CSS에서는 불가능)
+
+                //var span = document.querySelector("input[name=memberNick]").nextElementSibling;//VanillaJS
+                //var span = this.nextElementSibing;//VanillaJS
+                //var span = $("input[name=memberNick] + span");//jquery
+                //var span = $("input[name=memberNick]").next();//jquery
+                var span = $(this).next();//jquery
+
+                if(regex.test(nickname)){
+                    span.text("올바른 닉네임 형식입니다");
+                }
+                else{
+                    span.text("닉네임은 한글 2~10자 이내로 작성하세요");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" name="memberNick">
+    <span></span>
+</body>
+</html>

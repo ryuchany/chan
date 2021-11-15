@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목차 화면</title>
+
+    <!-- jquery cdn 또는 보유한 파일을 불러오는 코드를 작성 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            //.contents 안의 a태그를 누르면 이동을 중지하고 하위 메뉴를 토글한다.
+            /*
+            $(".contents a").click(function(e){
+                e.preventDefault();
+                //$(this).next().toggle();
+                $(this).next().slideToggle();
+            });
+            */
+
+            /*
+            $(".contents").find("a").click(function(e){
+                e.preventDefault();
+                $(this).next().slideToggle();
+            });
+            */
+
+            $(".contents").find("li").click(function(e){
+                e.preventDefault();
+                $(this).children("ol").slideToggle();
+            });
+        });
+    </script>
+</head>
+<body>
+    <ol class="contents">
+        <li>
+            <a href="#">자바</a>
+            <ol>
+                <li><a href="#">변수</a></li>
+                <li><a href="#">입출력</a></li>
+                <li><a href="#">조건</a></li>
+                <li><a href="#">반복</a></li>
+            </ol>
+        </li>
+        <li>
+            <a href="#">데이터베이스</a>
+            <ol>
+                <li><a href="#">변수</a></li>
+                <li><a href="#">입출력</a></li>
+                <li><a href="#">조건</a></li>
+                <li><a href="#">반복</a></li>
+            </ol>
+        </li>
+    </ol>
+</body>
+</html>

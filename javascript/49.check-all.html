@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전체 선택</title>
+    <style>
+        label {
+            display: block;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+                $(function(){
+            $(".check-all").on("input", function(){
+                //주인공 : 선택된 .check-all
+                //주인공의 상태 : this.checked 또는 $(this).prop("checked")
+
+                var isChecked = $(this).prop("checked");
+                //$("input[type=checkbox]:not(.check-all)").prop("checked", isChecked);
+                //$(".check-all").prop("checked", isChecked);
+                $("input[type=checkbox]").prop("checked", isChecked);
+            });
+        });
+    </script>
+</head>
+<body>
+    <label>
+        <input type="checkbox" oninput="checkToggle2();" class="check-all"> 
+        <span>전체 선택</span>
+    </label>
+    <hr>
+    <label><input type="checkbox" oninput="check2();"><span>딸기</span></label>
+    <label><input type="checkbox" oninput="check2();"><span>포도</span></label>
+    <label><input type="checkbox" oninput="check2();"><span>람부탄</span></label>
+    <label><input type="checkbox" oninput="check2();"><span>홍시</span></label>
+    <label><input type="checkbox" oninput="check2();"><span>두리안</span></label>
+    <label><input type="checkbox" oninput="check2();"><span>오렌지</span></label>
+    <label><input type="checkbox" oninput="check2();"><span>망고</span></label>
+    <label><input type="checkbox" oninput="check2();"><span>파인애플</span></label>
+    <label><input type="checkbox" oninput="check2();"><span>용과</span></label>
+    <label><input type="checkbox" oninput="check2();"><span>샤인머스켓</span></label>
+    <label><input type="checkbox" oninput="check2();"><span>스타후르츠</span></label>
+    <hr>
+    <label>
+        <input type="checkbox" oninput="checkToggle2();" class="check-all"> 
+        <span>전체 선택</span>
+    </label>
+    <label>
+        <input type="checkbox" oninput="checkToggle2();" class="check-all"> 
+        <span>전체 선택</span>
+    </label>
+    <label>
+        <input type="checkbox" oninput="checkToggle2();" class="check-all"> 
+        <span>전체 선택</span>
+    </label>
+
+</body>
+</html>
