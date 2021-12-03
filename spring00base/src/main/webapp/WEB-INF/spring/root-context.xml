@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	스프링 전역 설정 파일
+	- 모든 스프링 요소에서 알아야 하는 공용 도구들을 이곳에 등록
+	- 모든 스프링 요소에서 알아야 하는 공용 설정들을 이곳에 작성
+	- 필요로 하는 namespace가 있다면 하단의 namespace 탭에서 추가 가능
+ -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+</beans>
