@@ -38,7 +38,22 @@
 		= annotation-driven 설정을 해야 annotation이 활성화된다
 	 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	<context:component-scan base-package="com.kh.spring08"></context:component-scan>
+	<context:component-scan base-package="com.kh.spring09"></context:component-scan>
 
+	<!-- 
+		데이터베이스 관련 도구 등록
+		- DriverManagerDataSource : 일반 연결 생성 도구(매번 신규 생성)
+		- JdbcTemplate : 명령 실행 도구
+	 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="username" value="kh"></property>
+		<property name="password" value="kh"></property>
+	</bean>
 
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<!-- database 연결 도구를 주입(DI) 한다 -->
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 </beans>
