@@ -163,6 +163,26 @@
 		    <version>${org.springframework-version}</version>
 		</dependency>		
 		
+		<!-- DBCP 의존성 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-dbcp2</artifactId>
+		    <version>2.9.0</version>
+		</dependency>		
+
+		<!-- 
+			롬복 : 클래스 코드 자동화 라이브러리
+			- 의존성 추가를 통해 롬복이 제공하는 기능 사용 가능
+			- 이클립스에 추가 설정을 통해 이클립스가 코드가 있다고 믿게 만들어야 한다.
+				1. 해당하는 의존성의 실제 위치를 찾아가야 한다.
+		 -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.22</version>
+		    <scope>provided</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<!-- 
