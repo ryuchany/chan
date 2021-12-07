@@ -40,7 +40,7 @@
 		= annotation-driven 설정을 해야 annotation이 활성화된다
 	 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	.<context:component-scan base-package="com.kh.spring11"></context:component-scan>
+	<context:component-scan base-package="com.kh.spring11"></context:component-scan>
 
 	<!-- 
 		데이터베이스 관련 도구 등록
