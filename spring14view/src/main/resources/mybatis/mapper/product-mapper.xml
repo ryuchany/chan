@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+	myBatis 매퍼 파일
+	- DBMS에서 실행할 SQL 구문을 저장하는 XML 파일
+	- namespace를 통해서 여러 개의 매퍼를 구분한다
+	- 테이블 당 1개씩 만드는 것이 일반적이며, 따라서 namespace를 테이블명으로 작성하면 구분이 용이하다.
+	- <insert> , <select> , <update> , <delete>를 이용해서 CRUD 구문을 작성한다.
+	- 각 구문은 외부에서 호출이 가능하도록 반드시 ID를 겹치지 않게 부여해야 한다.
+	- parameterType 은 구문을 실행하기 위해 필요한 데이터의 형태를 말한다.
+	- resultType은 구문을 실행한 결과를 어떤 형태로 변환해야 하는지를 말한다.
+ -->
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+
+	<!-- 일반 목록 -->
+	<select id="list" resultType="ProductDto">
+		select * from product
+	</select>
+
+	<!-- 이름 검색 : 검색단어와 유사한 형태의 값을 찾는 구문으로 작성 -->
+	<select id="findByName" parameterType="String" resultType="ProductDto">
+		select * from product where instr(name, #{name}) > 0
+	</select>
+
+	<!-- 통합 검색 -->
+
+	<!-- 이름이 들어오면 조건을 붙이고 안들어오면 조건을 안붙이도록 구현 -->
+	<select id="complexSearch1" parameterType="String" resultType="productDto">
+		select * from product
+		<if test="name != null">
+		where instr(name, #{name}) > 0
+		</if>
+	</select>
+
+	<!-- 이름은 유사한 항목을 찾고, 분류는 정확히 일치하는 항목을 찾도록 구현 -->
+	<select id="complexSearch2" parameterType="map" resultType="productDto">
+		select * from product
+		where 1=1
+		<if test="name != null">
+			 and instr(name, #{name}) > 0
+		</if>
+		<if test="type != null">
+			and type = #{type}
+		</if>
+	</select>
+
+	<!-- where 태그를 이용하여 조건절을 작성할 수 있다 -->
+	<select id="complexSearch3" parameterType="map" resultType="productDto">
+		select * from product
+		<where>
+			<if test="name != null">
+				 and instr(name, #{name}) > 0
+			</if>
+			<if test="type != null">
+				and type = #{type}
+			</if>
+		</where>
+	</select>
+
+	<!-- 모든 항목을 가정하여 검색 및 목록 구문을 작성 -->
+	<select id="complexSearch4" parameterType="map" resultType="ProductDto">
+		select * from product
+
+		<!-- 조건절 추가 -->
+		<where>
+			<if test="no != null">
+			and no = #{no}
+			</if>
+			<if test="name != null">
+			and instr(name, #{name}) > 0
+			</if>
+			<if test="type != null">
+			and type = #{type}
+			</if>
+			<if test="minPrice != null and maxPrice != null">
+			and price between #{minPrice} and #{maxPrice}
+			</if>
+			<if test="madeStart != null and madeFinish != null">
+			and made between 
+				to_date(#{madeStart}||' '||'00:00:00', 'YYYY-MM-DD HH24:MI:SS') 
+				and 
+				to_date(#{madeFinish}||' '||'23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+			</if>
+			<if test="expireStart != null and expireFinish != null">
+			and expire between 
+				to_date(#{expireStart}||' '||'00:00:00', 'YYYY-MM-DD HH24:MI:SS') 
+				and 
+				to_date(#{expireFinish}||' '||'23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+			</if>
+		</where>
+	</select>
+
+	<!-- 
+		정렬 살펴보기
+		- 하나의 항목으로 정렬하고 싶은 경우 : 두개의 값만 필요(order=항목, sort=방식)
+		- 2차, 3차 정렬 등 지속적으로 정렬이 필요한 경우  : order와 sort가 배열 혹은 List방식으로 존재해야함
+	-->
+	<select id="complexSearch5" parameterType="map" resultType="ProductDto">
+		select * from product
+		<if test="order != null and sort != null">
+		order by ${order} ${sort}
+		</if>
+	</select>
+
+	<select id="complexSearch6" parameterType="map" resultType="ProductDto">
+		select * from product
+		<if test="orders != null">
+			order by 
+			<!-- 
+				orders 항목에 들어있는 값을 기준으로 반복적으로 구문을 생성한다
+				- collection : 데이터가 들어있는 저장소(List)
+				- item : 저장소에서 꺼낸 데이터의 이름
+				- begin : 반복 시작 시 출력할 글자(시작 괄호 등)
+				- end : 반복 종료 시 출력할 글자(종료 괄호 등)
+				- seperator : 각 출력 사이에 들어가야 하는 글자(콤마 등)
+			-->
+			<foreach item="vo" collection="orders" separator=",">
+				${vo.order} ${vo.sort}
+			</foreach>
+		</if>
+	</select>
+
+	<!-- 최종 = complexSearch4 + complexSearch6 -->
+	<select id="perfectSearch" parameterType="map" resultType="ProductDto">
+		select * from product
+
+		<where>
+			<if test="no != null">
+			and no = #{no}
+			</if>
+			<if test="name != null">
+			and instr(name, #{name}) > 0
+			</if>
+			<if test="type != null">
+			and type = #{type}
+			</if>
+
+			<!-- choose 구문은 switch 처럼 when이 case 역할, otherwise가 default 역할 -->
+
+			<choose>
+				<when test="minPrice != null and maxPrice != null">
+				and price between #{minPrice} and #{maxPrice}
+				</when>
+				<when test="minPrice != null">
+				<!-- CDATA 구문을 작성하면 해당 영역은 XML로 해석되지 않으므로 특수문자를 작성할 수 있다 -->
+				<![CDATA[			
+				and price >= #{minPrice}
+				]]>
+				</when>
+				<when test="maxPrice != null">
+				<![CDATA[			
+				and price <= #{maxPrice}
+				]]>
+				</when>
+			</choose>
+
+
+			<if test="madeStart != null and madeFinish != null">
+			and made between 
+				to_date(#{madeStart}||' '||'00:00:00', 'YYYY-MM-DD HH24:MI:SS') 
+				and 
+				to_date(#{madeFinish}||' '||'23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+			</if>
+			<if test="expireStart != null and expireFinish != null">
+			and expire between 
+				to_date(#{expireStart}||' '||'00:00:00', 'YYYY-MM-DD HH24:MI:SS') 
+				and 
+				to_date(#{expireFinish}||' '||'23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+			</if>
+		</where>
+
+		<if test="orders != null and orders.size() > 0">
+			order by 
+			<foreach item="vo" collection="orders" separator=",">
+				${vo.order} ${vo.sort}
+			</foreach>
+		</if>
+	</select>
+
+</mapper>
