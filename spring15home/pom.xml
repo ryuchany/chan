@@ -12,9 +12,9 @@
 		식별자(e.g. 제품). top-level-package의 3계층 - name : 프로젝트의 context 식별자(e.g. 프로젝트명) 
 		- packaging : 배포 형태(jar/war) - version : 프로젝트의 현재 버전(major.minor.release) -->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.kh</groupId>.
-	<artifactId>spring12</artifactId>.
-	<name>spring12test</name>.
+	<groupId>com.kh</groupId>
+	<artifactId>spring15</artifactId>
+	<name>spring15home</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
