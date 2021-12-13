@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- 
 	이 프로젝트가 Web Application Server에서 어떻게 운영되어야 하는지를 설정하는 파일
 	= 스프링은 자바를 기반으로한 확장팩이다
@@ -9,8 +8,7 @@
 <web-app version="4.0" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
-<!-- 
+	<!-- 
 		한글(및 유니코드) 변환을 위한 필터를 등록
 		- 스프링에서 제공하는 필터를 사용
 		- org.springframework.web.filter.CharacterEncodingFilter
@@ -18,7 +16,7 @@
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-
+		
 		<!-- 
 			부가 설정
 			1. (encoding=UTF-8) 인코딩 방식을 UTF-8로 설정 
@@ -37,7 +35,6 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
 	<!-- 
 		모든 스프링 서블릿에 공유되는 전역(Global) 설정 파일
 		- 설정파일을 등록할 때의 이름은 무조건 contextConfigLocation이라고 지어야 함
@@ -47,7 +44,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
-
+	
 	<!-- 
 		전역 설정파일(root-context.xml)과 서블릿 설정파일(servlet-context.xml)을 연결하는 도구 등록
 		= 전역 설정파일의 내용을 서블릿 설정파일에서 사용할 수 있다 (Y/N)? Y
@@ -57,6 +54,23 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+
+	<!-- 
+		Spring proxy filter 등록
+		= root-context.xml에 등록한 필터의 bean을 이곳에 필터로 등록
+		= filter-name은 등록된 spring bean의 id를 작성해야 한다.
+		= Filter class는 지정된 클래스를 등록해야 한다(DelegatingFilterProxy)
+		
+		<filter>
+			<filter-name>springFilter</filter-name>
+			<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		</filter>
+		<filter-mapping>
+			<filter-name>springFilter</filter-name>
+			<url-pattern>/*</url-pattern>
+		</filter-mapping>
+	 -->
+
 
 	<!-- 
 		DispatcherServlet 등록 설정
@@ -77,10 +91,9 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
+		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
 </web-app>
