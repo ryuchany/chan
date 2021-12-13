@@ -35,7 +35,7 @@
 					<img src="https://via.placeholder.com/300x300?text=User" width="100%" class="image image-round image-border">
 					</c:when>
 					<c:otherwise>
-					<img src="profile.kh?memberProfileNo=${memberProfileDto.memberProfileNo}" width="100%" class="image image-round image-border">
+					<img src="profile?memberProfileNo=${memberProfileDto.memberProfileNo}" width="100%" class="image image-round image-border">
 					</c:otherwise>
 				</c:choose>
 

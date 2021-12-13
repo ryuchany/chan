@@ -77,28 +77,9 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.15</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.mail</groupId>
-					<artifactId>mail</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.jms</groupId>
-					<artifactId>jms</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.jdmk</groupId>
-					<artifactId>jmxtools</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.jmx</groupId>
-					<artifactId>jmxri</artifactId>
-				</exclusion>
-			</exclusions>
-			<scope>runtime</scope>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-core</artifactId>
+		    <version>2.15.0</version>
 		</dependency>
 
 		<!-- @Inject -->
@@ -194,6 +175,22 @@
    		    <groupId>org.springframework.security</groupId>
    		    <artifactId>spring-security-core</artifactId>
   		    <version>5.6.0</version>
+		</dependency>
+		
+		<!-- 
+			파일 업로드 처리 의존성
+			- commons-io : 아파치에서 제공하는 파일 입출력 제어 의존성
+			- commons-fileupload :  아파치에서 제공하는 파일 업로드 다운로드 제어 의존성(multipart)
+		-->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.11.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.4</version>
 		</dependency>
 
 	</dependencies>

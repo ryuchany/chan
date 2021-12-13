@@ -10,7 +10,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-<!-- 
+	<!-- 
 		한글(및 유니코드) 변환을 위한 필터를 등록
 		- 스프링에서 제공하는 필터를 사용
 		- org.springframework.web.filter.CharacterEncodingFilter
@@ -57,7 +57,22 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	
+	<!-- 
+		Spring proxy filter 등록
+		= root-context.xml에 등록한 필터의 bean을 이곳에 필터로 등록
+		= filter-name은 등록된 spring bean의 id를 작성해야 한다.
+		= Filter class는 지정된 클래스를 등록해야 한다(DelegatingFilterProxy)
+	 -->
+	<filter>
+		<filter-name>springFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	 
 	<!-- 
 		DispatcherServlet 등록 설정
 		= 스프링에서 제공해주는 모든 요청을 처리하는 서블릿

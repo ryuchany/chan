@@ -3,7 +3,7 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 
 <div class="container-400 container-center">
 	<div class="row center">
@@ -32,6 +32,10 @@
 	<div class="row">
 		<label>전화번호</label>
 		<input type="tel" name="memberPhone" class="form-input">
+	</div>
+	<div class="row">
+		<label>프로필 이미지</label>
+		<input type="file" name="attach" accept="image/*" class="form-input">
 	</div>
 	<div class="row">
 		<input type="submit" value="가입" class="form-btn">
