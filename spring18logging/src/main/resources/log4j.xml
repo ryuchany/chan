@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	로깅(Logging)
+	- 메세지를 남기는 행위
+	- log4j는 로깅을 수행하는 도구 중 하나
+	
+	로깅 메세지 수준(Level)
+	- 중요한 메세지와 덜 중요한 메세지를 구분해서 출력 및 저장하도록 설계되어 있다.
+	- 총 6개의 단계가 존재 : (↑)FATAL - ERROR - WARN - INFO - DEBUG - TRACE(↓)
+ -->
+
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="console" />
+	</root>
+
+</log4j:configuration>
