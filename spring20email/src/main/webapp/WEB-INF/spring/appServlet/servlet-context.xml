@@ -37,7 +37,7 @@
 		= annotation-driven 설정을 해야 annotation이 활성화된다
 	 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	<context:component-scan base-package="com.kh.spring15" use-default-filters="false">
+	<context:component-scan base-package="com.kh.spring20" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 
@@ -59,35 +59,5 @@
 		<property name="maxUploadSizePerFile" value="1000000"></property>
 		<property name="maxUploadSize" value="10000000"></property>
 	</bean>
-	
-	<!-- 
-		인터셉터(Interceptor) 등록
-		- mvc:mapping에 가로챌 주소를 지정(여러 개 작성 가능)
-		- mvc:exclude-mapping에 제외할 주소를 지정(여러 개 작성 가능)
-		- bean에 처리할 인터셉터 클래스 객체를 지정
-		- Spring 표현식을 사용하여 주소 패턴을 지정(*, ** 구분)
-	 -->
-	<mvc:interceptors>
-		<!-- TestInterceptor에 대한 등록 처리 -->
-		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<bean class="com.kh.spring15.interceptor.TestInterceptor"></bean>
-		</mvc:interceptor>
-		
-		<!-- MemberInterceptor에 대한 등록 처리 -->
-		<mvc:interceptor>
-			<mvc:mapping path="/member/**"/>
-			<mvc:mapping path="/point/**"/>
-			<mvc:mapping path="/board/**"/>
-			<mvc:exclude-mapping path="/member/join"/>
-			<mvc:exclude-mapping path="/member/join_success"/>
-			<mvc:exclude-mapping path="/member/login"/>
-			<bean class="com.kh.spring15.interceptor.MemberInterceptor"></bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
-	
-	
-	
+
 </beans>
-
-

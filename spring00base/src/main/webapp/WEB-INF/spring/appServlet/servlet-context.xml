@@ -40,7 +40,7 @@
 	<context:component-scan base-package="안바꾸면바보" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
-
+	
 	<!-- 
 		DispatcherServlet에서 처리하지 말아야 할 요청을 설정
 		= 이미지, 음악, CSS, Javascript 파일 등은 정적 파일이므로 굳이 컨트롤러를 거칠 필요가 없음
@@ -48,7 +48,7 @@
 		= 원하는 주소를 특정 위치로 연결할 수 있다.
 	 -->
  	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
-
+	
 	<!-- 
 		파일 업로드(multipart) 방식 요청을 처리할 수 있는 도구를 등록
 		- 아이디를 반.드.시. multipartResolver라고 작성해야 한다.
@@ -59,5 +59,26 @@
 		<property name="maxUploadSizePerFile" value="1000000"></property>
 		<property name="maxUploadSize" value="10000000"></property>
 	</bean>
+
+	<!-- 
+		인터셉터(Interceptor) 등록
+		- mvc:mapping에 가로챌 주소를 지정(여러 개 작성 가능)
+		- mvc:exclude-mapping에 제외할 주소를 지정(여러 개 작성 가능)
+		- bean에 처리할 인터셉터 클래스 객체를 지정
+		- Spring 표현식을 사용하여 주소 패턴을 지정(*, ** 구분)
+		
+		- 샘플 코드
+		<mvc:interceptors>
+			<mvc:interceptor>
+				<mvc:mapping path="/member/**"/>
+				<mvc:mapping path="/point/**"/>
+				<mvc:mapping path="/board/**"/>
+				<mvc:exclude-mapping path="/member/join"/>
+				<mvc:exclude-mapping path="/member/join_success"/>
+				<mvc:exclude-mapping path="/member/login"/>
+				<bean class="com.kh.spring15.interceptor.MemberInterceptor"></bean>
+			</mvc:interceptor>
+		</mvc:interceptors>
+	 -->
 
 </beans>

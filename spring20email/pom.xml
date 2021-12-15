@@ -16,9 +16,9 @@
 		- version : 프로젝트의 현재 버전(major.minor.release)
 	-->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>여기</groupId>
-	<artifactId>안바꾸면</artifactId>
-	<name>바보</name>
+	<groupId>com.kh</groupId>
+	<artifactId>spring20</artifactId>
+	<name>spring20email</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	
@@ -246,7 +246,7 @@
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-context-support</artifactId>
 		    <version>${org.springframework-version}</version>
-		</dependency>		
+		</dependency>
 		
 	</dependencies>
 	

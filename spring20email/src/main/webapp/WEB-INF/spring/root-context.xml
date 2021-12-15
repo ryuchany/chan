@@ -16,21 +16,18 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<!-- 
-		미리 만들어둔 properties 들을 등록하여 이 설정파일에서 사용할 수 있도록 구현
-		= 경로와 관련된 모듈을 필요(spring-context)
-		= 사용은 EL로 한다(SpringEL)
+	
 	 -->
-	<context:property-placeholder location="classpath:/properties/**/*.properties"/>
 
 	<!-- 
 		필터는 전역설정파일에 등록되므로 필터에서 사용할 수 있는 도구들도 전역설정파일에 등록해야 한다
 		- @Controller를 제거한 나머지 도구들을 모두 이곳에 등록
 	 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
-	<context:component-scan base-package="안바꾸면바보" use-default-filters="true">
+	<context:component-scan base-package="com.kh.spring20" use-default-filters="true">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
-	
+
 	<!-- 
 		데이터베이스 관련 도구 등록
 		- DriverManagerDataSource : 일반 연결 생성 도구(매번 신규 생성)
@@ -38,29 +35,29 @@
 		- JdbcTemplate : 명령 실행 도구
 	 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${database.driver}"></property>
-		<property name="url" value="${database.url}"></property>
-		<property name="username" value="${database.username}"></property>
-		<property name="password" value="${database.password}"></property>
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="username" value="kh"></property>
+		<property name="password" value="kh"></property>
 	</bean>
 
 	<bean id="dbcpSource" class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="${database.driver}"></property>
-		<property name="url" value="${database.url}"></property>
-		<property name="username" value="${database.username}"></property>
-		<property name="password" value="${database.password}"></property>
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="username" value="kh"></property>
+		<property name="password" value="kh"></property>
 
-		<property name="maxTotal" value="${database.maxTotal}"></property>
-		<property name="maxIdle" value="${database.maxIdle}"></property>
-		<property name="minIdle" value="${database.minIdle}"></property>
-		<property name="maxWaitMillis" value="${database.maxWaitMillis}"></property>
+		<property name="maxTotal" value="20"></property>
+		<property name="maxIdle" value="5"></property>
+		<property name="minIdle" value="0"></property>
+		<property name="maxWaitMillis" value="3000"></property>
 	</bean>
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<!-- database 연결 도구를 주입(DI) 한다 -->
 		<property name="dataSource" ref="dbcpSource"></property>
 	</bean>
-	
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 데이터베이스 연결 방식을 지정 -->
 		<property name="dataSource" ref="dbcpSource"></property>
@@ -77,15 +74,15 @@
 		-->
 		<property name="mapperLocations" value="classpath:/mybatis/mapper/**/*-mapper.xml"></property>
 	</bean>
-	
+
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<!-- 마이바티스 중앙 제어 장치의 정보를 "반드시" 가져야 하도록 설정(생성자) -->
 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-	
+
 	<!-- 암호화를 위한 Encoder 등록 -->
 	<bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
-	
+
 	<!-- 
 		사용할 필터를 bean으로 전체 설정에 등록
 		= 반드시 이곳에 해야 한다(서블릿 설정파일에 하면 인식이 안됨) 
@@ -95,16 +92,16 @@
 		
 		<bean id="springFilter" class="com.kh.spring15.filter.SpringFilter"></bean>	
 	-->
-
-	<!-- 
-	이메일 전송 도구(필요할 경우 아래의 구문을 등록 해제하여 사용)
-		
+	
+		<!-- 
+		이메일 전송 도구 
+	-->
 	<bean id="sender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="${email.host}"></property>
-		<property name="port" value="${email.port}"></property>
-		<property name="username" value="${email.username}"></property>
-		<property name="password" value="${email.password}"></property>
-		
+		<property name="host" value="smtp.gmail.com"></property>
+		<property name="port" value="587"></property>
+		<property name="username" value="chanytest12"></property>
+		<property name="password" value="cksgnl1234!"></property>
+
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>
@@ -114,15 +111,14 @@
 				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
 			</props>
 		</property>
-	</bean> 
-	-->
-
+	</bean>
 
 	<!-- 
-		Task 관련 설정 
+		Task 관련 설정
 		- namespace에 task를 추가
 		- annotation-driven 태그를 작성하여 관련 어노테이션을 활성화
-	-->
-	<task:annotation-driven/>	
+	 -->
+	 <task:annotation-driven/>
+	 
 
 </beans>
