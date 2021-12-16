@@ -16,9 +16,9 @@
 		- version : 프로젝트의 현재 버전(major.minor.release)
 	-->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>여기</groupId>
-	<artifactId>안바꾸면</artifactId>
-	<name>바보</name>
+	<groupId>com.kh</groupId>
+	<artifactId>spring21</artifactId>
+	<name>spring21ajax</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	
@@ -101,7 +101,7 @@
 		<dependency>
 		    <groupId>org.apache.logging.log4j</groupId>
 		    <artifactId>log4j-core</artifactId>
-		    <version>2.16.0</version>
+		    <version>2.15.0</version>
 		</dependency>
 
 		<!-- @Inject -->
@@ -257,6 +257,16 @@
     		<artifactId>jackson-databind</artifactId>
    			<version>2.13.0</version>
 		</dependency>		
+		
+		<!-- 
+			데이터 변환 라이브러리
+			= 의존성만 추가하면 모든 @RestController의 반환값을 변환 처리한다 
+		-->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.13.0</version>
+		</dependency>
 		
 	</dependencies>
 	
