@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	Spring에서 사용자 요청을 모두 처리하는 DispatcherServlet이 알아야 하는 설정
+	(DispatcherServlet에게 부탁하는 내용들이 적혀있는 문서)
+	
+	= 사용자가 OOO 과 같은 요청을 보낸다면 OOO 으로 처리해주세요!
+	= 요청과 관련된 설정이 이곳에 작성됨
+ -->
+<beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- 
+		View Resolver 설정
+		= 컨트롤러에서 업무 수행 후 JSP와 연결할 때 작성하는 주소를 간소화 하는 역할의 도구
+		= org.springframework.web.servlet.view.InternalResourceViewResolver
+		= prefix라는 속성으로 접두사를 설정
+		= suffix라는 속성으로 접미사를 설정
+		= 접두사 접미사를 제외하고 주소를 설정하면 자동 완성
+	 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<!-- 
+		Component Scan 설정
+		= 자동으로 구성요소들을 탐색하는 설정
+		= 특정 지점(base-package)을 설정하여 해당 지점에 있는 모든 요소를 탐색하여 등록한다
+		= spring-context 모듈의 설정
+		= 제외하고 싶은 내용은 exclude-filter, 추가하고 싶은 내용은 include-filter 를 사용
+		= 어노테이션 설정이 된 파일들을 탐색하여 자동으로 이 파일에 등록 처리
+		= @Controller , @RestController
+		= annotation-driven 설정을 해야 annotation이 활성화된다
+	 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<context:component-scan base-package="com.kh.spring22" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- 
+		DispatcherServlet에서 처리하지 말아야 할 요청을 설정
+		= 이미지, 음악, CSS, Javascript 파일 등은 정적 파일이므로 굳이 컨트롤러를 거칠 필요가 없음
+		= location은 실제 위치를 지정하고 mapping은 주소의 패턴을 지정한다
+		= 원하는 주소를 특정 위치로 연결할 수 있다.
+	 -->
+ 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	
+	<!-- 
+		파일 업로드(multipart) 방식 요청을 처리할 수 있는 도구를 등록
+		- 아이디를 반.드.시. multipartResolver라고 작성해야 한다.
+		- 이 도구는 파일을 먼저 저장하지 않고 사용자가 저장 여부를 선택할 수 있도록 처리해준다. 
+	-->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<property name="maxUploadSizePerFile" value="1000000"></property>
+		<property name="maxUploadSize" value="10000000"></property>
+	</bean>
+
+	<!-- 
+		인터셉터(Interceptor) 등록
+		- mvc:mapping에 가로챌 주소를 지정(여러 개 작성 가능)
+		- mvc:exclude-mapping에 제외할 주소를 지정(여러 개 작성 가능)
+		- bean에 처리할 인터셉터 클래스 객체를 지정
+		- Spring 표현식을 사용하여 주소 패턴을 지정(*, ** 구분)
+		
+		- 샘플 코드
+		<mvc:interceptors>
+			<mvc:interceptor>
+				<mvc:mapping path="/member/**"/>
+				<mvc:mapping path="/point/**"/>
+				<mvc:mapping path="/board/**"/>
+				<mvc:exclude-mapping path="/member/join"/>
+				<mvc:exclude-mapping path="/member/join_success"/>
+				<mvc:exclude-mapping path="/member/login"/>
+				<bean class="com.kh.spring15.interceptor.MemberInterceptor"></bean>
+			</mvc:interceptor>
+		</mvc:interceptors>
+	 -->
+	 
+<!-- 
+	 	스프링 웹소켓 서버 등록
+	 	- 설정파일에 websocket namespace가 존재해야함
+	 	- 서버를 bean으로 등록해둔 뒤 웹소켓의 처리를 담당하도록 설정한다
+	  -->
+	<bean id="basicServer" class="com.kh.spring22.websocket.BasicWebsocketServer"></bean>
+	<bean id="manageServer" class="com.kh.spring22.websocket.ManageWebsocketServer"></bean>
+	<bean id="messageServer" class="com.kh.spring22.websocket.MessageWebsocketServer"></bean>
+	<bean id="jsonServer" class="com.kh.spring22.websocket.JsonWebsocketServer"></bean>
+	<bean id="memberServer" class="com.kh.spring22.websocket.MemberWebsocketServer"></bean>
+	<bean id="sockjsServer" class="com.kh.spring22.websocket.SockjsWebsocketServer"></bean>
+	<bean id="multiServer" class="com.kh.spring22.websocket.MultiChannelWebsocketServer"></bean>
+
+	<websocket:handlers>
+
+		<!-- 
+			basicServer에게 ws://host:port/context/basicServer 을 처리하도록 위임
+			(주의) http에 같은 주소가 있으면 접속이 안된다 (sockjs 라는 기술로 해결 가능)
+		-->
+		<websocket:mapping handler="basicServer" path="/basicServer" />
+		
+		<!-- 
+			manageServer를 등록하고 ws://host:port/context/manageServer 를 처리하도록 위임
+		 -->
+		<websocket:mapping handler="manageServer" path="/manageServer"/>
+		
+		<websocket:mapping handler="messageServer" path="/messageServer"/>
+
+		<websocket:mapping handler="jsonServer" path="/jsonServer"/>
+
+		<websocket:mapping handler="memberServer" path="/memberServer"/>
+
+		<websocket:mapping handler="sockjsServer" path="/sockjsServer"/>
+
+		<websocket:mapping handler="multiServer" path="/multiServer"/>
+
+		<!-- 
+			원래 웹소켓과 HTTP는 데이터 공유가 안되지만
+			웹소켓에서 HTTP에 있는 사용자 로그인 정보를 써야 하는 경우가 무조건 발생
+			따라서 스프링 웹소켓에서는 자체적으로 "인터셉터"를 제공하여 
+			이를 설정하면 세션 정보를 초기에 전달받을 수 있다
+		 -->
+		<websocket:handshake-interceptors>
+			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"></bean>
+		</websocket:handshake-interceptors>
+
+		<!-- 
+			sockjs 스프링에서 공식적으로 지원하는 웹소켓 보완 기술(비슷한 기술로는 socket io가 있다.. nodeJS)
+			= IE 9 처럼 웹소켓을 지원하지 않는 브라우저는 Polling 방식으로 대체하여 유사 처리를 수행
+			= 개발할 때 웹소켓처럼 개발하면 자동 적용
+			= 여러가지 상태 헤더나 옵션등을 설정해서 웹소켓의 안정성과 성능 향상을 도모할 수 있다(heartbeat)
+		 	= 적용하면 모든 웹소켓의 접속방식이 변경되므로 주의할것!
+		 -->
+<!-- 		<websocket:sockjs></websocket:sockjs> -->
+
+	</websocket:handlers>
+	 
+
+</beans>
