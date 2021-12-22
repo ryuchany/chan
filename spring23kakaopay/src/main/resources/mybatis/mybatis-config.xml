@@ -10,7 +10,7 @@
 <configuration>
 
 	<!-- propreties : 변수 설정 영역 -->
-
+	
 	<!-- settings : 운영 규칙 설정 영역 -->
 	<settings>
 		<!-- 캐시(cache)를 사용할 것인지 여부를 설정 -->
@@ -18,7 +18,7 @@
 		<!-- 필수 설정 : DBMS의 snake_case를 자바의 camel_case로 자동변환해주는 설정 -->
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-
+	
 	<!-- 
 		typeAliases : 별칭을 부여하는 영역
 		- myBatis는 기본적으로 DTO 등을 풀 패키지 경로로 지정해야 한다. 
@@ -34,6 +34,6 @@
 		<package name="com.kh.spring23.dto"/>
 		<package name="com.kh.spring23.vo"/>
 	</typeAliases>
-
-
+	
+	
 </configuration>

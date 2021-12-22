@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <!-- 
 	myBatis 매퍼 파일
 	- DBMS에서 실행할 SQL 구문을 저장하는 XML 파일
@@ -10,16 +9,37 @@
 	- parameterType 은 구문을 실행하기 위해 필요한 데이터의 형태를 말한다.
 	- resultType은 구문을 실행한 결과를 어떤 형태로 변환해야 하는지를 말한다.
  -->
-
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="buyDetail">
-
 	<insert id="insert" parameterType="BuyDetailDto">
 		insert into buy_detail values(
-			#{buyNo}, #{productNo}, #{productName}, #{quantity}, #{price}
+			#{buyNo}, #{productNo}, #{productName}, #{quantity}, #{price}, '결제'
 		)
 	</insert>
+	
+	<select id="list" parameterType="int" resultType="BuyDetailDto">
+		select * from buy_detail where buy_no = #{buyNo}
+		order by product_no asc
+	</select>
+
+	<select id="get" parameterType="map" resultType="BuyDetailDto">
+		select * from buy_detail where buy_no = #{buyNo} and product_no = #{productNo}
+	</select>
+
+	<update id="cancel" parameterType="map">
+		update buy_detail set status='취소' 
+		where buy_no = #{buyNo} and product_no = #{productNo}
+	</update>
+
+	<select id="cancelAvailableAmount" parameterType="int" resultType="long">
+		select nvl(sum(price), 0) from buy_detail where buy_no = #{buyNo} and status = '결제'
+	</select>
+
+	<update id="cancelAll" parameterType="int">
+		update buy_detail set status='취소'
+		where buy_no = #{buyNo}
+	</update>
 
 </mapper>

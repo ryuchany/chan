@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <h1>결제 테스트</h1>
-
 <form action="pay/confirm2" method="get">
 <c:forEach var="productDto" items="${list}">
 	<div>
@@ -16,3 +14,5 @@
 
 <input type="submit" value="구매하기">
 </form>
+
+<h1><a href="pay/history">결제 이력 보기</a></h1>

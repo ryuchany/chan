@@ -11,4 +11,9 @@ public class BuyDto {
 	private String itemName;
 	private long totalAmount;
 	private Date buyTime;
+	private String status;
+	
+	public boolean isAllCanceled() {
+		return status == null || status.equals("전체취소");
+	}
 }
