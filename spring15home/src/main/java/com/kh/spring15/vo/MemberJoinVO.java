@@ -2,8 +2,6 @@ package com.kh.spring15.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.kh.spring15.entity.MemberDto;
-
 import lombok.Data;
 
 /**

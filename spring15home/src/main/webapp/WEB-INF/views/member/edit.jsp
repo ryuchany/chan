@@ -1,50 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%-- 출력 --%>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
+<h2>회원 정보 수정</h2>
+
 <form method="post">
-
-<div class="container-400 container-center">
-	<div class="row center">
-		<h2>개인정보 변경</h2>
-	</div>
-	<div class="row">
-		<label>비밀번호</label>
-		<input type="password" name="memberPw" required class="form-input">
-	</div>
-	<div class="row">
-		<label>닉네임</label>
-		<input type="text" name="memberNick" value="${memberDto.memberNick}" class="form-input">
-	</div>
-	<div class="row">
-		<label>생년월일</label>
-		<input type="date" name="memberBirth" value="${memberDto.memberBirth}" class="form-input">
-	</div>
-	<div class="row">
-		<label>이메일</label>
-		<input type="email" name="memberEmail" value="${memberDto.memberEmail}" class="form-input">
-	</div>		
-	<div class="row">
-		<label>전화번호</label>
-		<input type="tel" name="memberPhone" value="${memberDto.memberPhone}" class="form-input">
-	</div>	
-	<div class="row">
-		<input type="submit" value="변경" class="form-btn">
-	</div>
-
-	<c:if test="${param.error != null}">
-	<div class="row center">
-		<h4 class="error">입력하신 정보가 일치하지 않습니다</h4>
-	</div>
-	</c:if>
-</div>
+	
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>비밀번호</th>
+				<td>
+					<input type="password" name="memberPw" required>
+				</td>
+			</tr>
+			<tr>
+				<th>닉네임</th>
+				<td>
+					<input type="text" name="memberNick" required value="${memberDto.memberNick}">
+				</td>
+			</tr>
+			<tr>
+				<th>생년월일</th>
+				<td>
+					<input type="date" name="memberBirth" required value="${memberDto.getMemberBirthDay()}">
+<%-- 					<input type="date" name="memberBirth" required value="${memberDto.memberBirthDay}"> --%>
+				</td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td>
+					<input type="email" name="memberEmail" value="${memberDto.memberEmail}">
+				</td>
+			</tr>
+			<tr>
+				<th>전화번호</th>
+				<td>
+					<input type="tel" name="memberPhone" value="${memberDto.memberPhone}">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+					<input type="submit" value="수정">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
 </form>
 
-<%if(request.getParameter("error") != null){ %>
-	<h4><font color="red">입력하신 정보가 일치하지 않습니다</font></h4>
-<%} %>
+<c:if test="${param.error != null}">
+<h4><font color="red">비밀번호가 일치하지 않습니다</font></h4>
+</c:if>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

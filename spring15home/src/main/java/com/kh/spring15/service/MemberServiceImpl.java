@@ -19,7 +19,7 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDao memberDao;
 
 	@Autowired
-private MemberProfileDao memberProfileDao;
+	private MemberProfileDao memberProfileDao;
 
 @Override
 public void join(MemberJoinVO memberJoinVO) throws IllegalStateException, IOException {
